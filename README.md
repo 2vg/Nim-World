@@ -8,5 +8,8 @@ Nim言語の使い方などを日本語で書き記したものです。
 
 お手伝いさん急募。
 
-### Maintainer
+## Latest Build Preview
+[preview](https://htmlpreview.github.io/?https://github.com/2vg/Nim-World/blob/master/build/index.html)
+
+## Maintainer
 - [mofu](https://twitter.com/mfqn)
