@@ -1,4 +1,4 @@
-﻿# 👑 ようこそ、Nimの世界へ！
+﻿# 👑 Nimの世界
 
 > "Der Mensch ist doch ein Augentier -- schöne Dinge wünsch ich mir."
 
