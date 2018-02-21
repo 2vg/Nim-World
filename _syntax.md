@@ -138,6 +138,45 @@ echo "The Quick Brown Fox"[4 .. 8] # Quick
 
 ## 条件分岐
 
+Nimで条件によって処理を変えたい場合は、
+
+`if`と`case`を使う方法があります。
+
+### if文
+
+Nimのifは`if-elif-else`のような構文で書きます。
+
+```nim
+var
+  a = "apple"
+  b = "banana"
+
+if a == b:
+  echo "apple is banana :)"
+elif a != b:
+  echo "appppple 🍎"
+  echo "banaaana 🍌"
+else:
+  echo "See you"
+```
+
+また、式としても評価することができ、
+
+変数への代入で使用することも出来ます。
+
+```nim
+let
+  fruit = "🍎"
+
+var eat =
+  if fruit == "🍎":
+    "eating 🍎"
+  else:
+    "something want to eat..."
+
+echo eat # "eating 🍎"
+```
+
 ## ループ
 
 ## 配列
