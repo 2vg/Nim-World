@@ -4366,10 +4366,14 @@ div .terminal {
   <ul>
    <li><a href="#変数">変数</a></li>
    <li><a href="#文字列">文字列</a></li>
-   <li><a href="#型">型</a></li>
-   <li><a href="#条件分岐">条件分岐</a></li>
+   <li><a href="#条件分岐">条件分岐</a>
+   <ul>
+    <li><a href="#if文">if文</a></li>
+   </ul>
+   </li>
    <li><a href="#ループ">ループ</a></li>
    <li><a href="#配列">配列</a></li>
+   <li><a href="#型">型</a></li>
    <li><a href="#関数">関数</a></li>
    <li><a href="#オブジェクト">オブジェクト</a></li>
   </ul>
@@ -4493,6 +4497,10 @@ div .terminal {
 
 <p>ゆっくり見ていきましょう。</p>
 
+<p>また、インデントに関しては公式で二文字が推奨されているので、</p>
+
+<p>私達も二文字で書いていきたいと思います。</p>
+
 <a name="変数"></a>
 <h3>変数<a href="#document-top" title="Go to top"></a></h3>
 
@@ -4569,20 +4577,113 @@ x = 1
   b = "banana"
 </code></pre>
 
+<div class="note"><p>おまけ</p>
+
+<p>変数宣言で扱える文字範囲があり、こんな宣言も出来ます :)</p></div>
+
+<pre><code class="nim">var マジ卍 = "ﾏｼﾞ ﾏﾝｼﾞｨｨｨｨｨ!!!!!"
+</code></pre>
+
 <a name="文字列"></a>
 <h3>文字列<a href="#document-top" title="Go to top"></a></h3>
 
-<a name="型"></a>
-<h3>型<a href="#document-top" title="Go to top"></a></h3>
+<p>Nimの文字列はダブルクォート<code>"</code>で囲みます。</p>
+
+<p>シングルクォート<code>'</code>は文字と評価されてしまいます。</p>
+
+<p>文字列は<code>echo</code>関数で標準出力に表示させることが出来ます。</p>
+
+<pre><code class="nim">echo "Hello, World!"
+</code></pre>
+
+<p>また、日本語などのマルチバイトも扱うことができます。</p>
+
+<pre><code class="nim">echo "こんにちは🌏"
+</code></pre>
+
+<p>生の文字列は<code>r""</code>とすることで表現でき、エスケープシーケンス文字も無視されます。</p>
+
+<pre><code class="nim">echo r"Hello, \n World!" # Hello, \n World!
+</code></pre>
+
+<p>文字列中に<code>\n</code>と書くことで改行を入れることが出来ますが、</p>
+
+<p>ダブルクォートを三重にすることで、改行をそのまま表現できます。</p>
+
+<pre><code class="nim">echo """Hello,
+World
+!"""
+</code></pre>
+
+<p>文字の連結は、<code>&amp;</code>演算子で連結することが出来ます。</p>
+
+<pre><code class="nim">echo "Hello, " &amp; "World!"
+</code></pre>
+
+<p>標準入力は、<code>readLine(stdin)</code>をコールすることでユーザーからの入力を取得できます。</p>
+
+<pre><code class="nim">echo "こんにちは！ あなたの名前を教えてください！"
+let recv = readLine(stdin)
+echo "ようこそ、" &amp; recv &amp; "さん！"
+</code></pre>
+
+<p>また、文字列は<code>[]</code>演算子を使って任意のインデックスの文字を取得できます。</p>
+
+<p>一文字だけではなく、スライスのような形で一部の文字列を取得することも出来ます</p>
+
+<pre><code class="nim">echo "Hi !"[3] # !
+echo "The Quick Brown Fox"[4 .. 8] # Quick
+</code></pre>
 
 <a name="条件分岐"></a>
 <h3>条件分岐<a href="#document-top" title="Go to top"></a></h3>
+
+<p>Nimで条件によって処理を変えたい場合は、</p>
+
+<p><code>if</code>と<code>case</code>を使う方法があります。</p>
+
+<a name="if文"></a>
+<h4>if文<a href="#document-top" title="Go to top"></a></h4>
+
+<p>Nimのifは<code>if-elif-else</code>のような構文で書きます。</p>
+
+<pre><code class="nim">var
+  a = "apple"
+  b = "banana"
+
+if a == b:
+  echo "apple is banana :)"
+elif a != b:
+  echo "appppple 🍎"
+  echo "banaaana 🍌"
+else:
+  echo "See you"
+</code></pre>
+
+<p>また、式としても評価することができ、</p>
+
+<p>変数への代入で使用することも出来ます。</p>
+
+<pre><code class="nim">let
+  fruit = "🍎"
+
+var eat =
+  if fruit == "🍎":
+    "eating 🍎"
+  else:
+    "something want to eat..."
+
+echo eat # "eating 🍎"
+</code></pre>
 
 <a name="ループ"></a>
 <h3>ループ<a href="#document-top" title="Go to top"></a></h3>
 
 <a name="配列"></a>
 <h3>配列<a href="#document-top" title="Go to top"></a></h3>
+
+<a name="型"></a>
+<h3>型<a href="#document-top" title="Go to top"></a></h3>
 
 <a name="関数"></a>
 <h3>関数<a href="#document-top" title="Go to top"></a></h3>
@@ -4591,7 +4692,7 @@ x = 1
 <h3>オブジェクト<a href="#document-top" title="Go to top"></a></h3>
     </div>
     <div id="footer">
-      <p><span class="copy"></span> mofu &ndash; February 20, 2018</p>
+      <p><span class="copy"></span> mofu &ndash; February 21, 2018</p>
       <p><span>Powered by</span> <a href="https://h3rald.com/hastyscribe"><span class="hastyscribe"></span></a></p>
     </div>
   </div>
