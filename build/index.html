@@ -4369,11 +4369,27 @@ div .terminal {
    <li><a href="#条件分岐">条件分岐</a>
    <ul>
     <li><a href="#if文">if文</a></li>
+    <li><a href="#case文">case文</a></li>
+    <li><a href="#when文">when文</a></li>
    </ul>
    </li>
-   <li><a href="#ループ">ループ</a></li>
+   <li><a href="#ループ">ループ</a>
+   <ul>
+    <li><a href="#for文">for文</a></li>
+    <li><a href="#while文">while文</a></li>
+   </ul>
+   </li>
    <li><a href="#配列">配列</a></li>
-   <li><a href="#型">型</a></li>
+   <li><a href="#型">型</a>
+   <ul>
+    <li><a href="#プリミティブ型">プリミティブ型</a>
+    <ul>
+     <li><a href="#Boolean">Boolean</a>
+</li>
+    </ul>
+    </li>
+   </ul>
+   </li>
    <li><a href="#関数">関数</a></li>
    <li><a href="#オブジェクト">オブジェクト</a></li>
   </ul>
@@ -4640,7 +4656,7 @@ echo "The Quick Brown Fox"[4 .. 8] # Quick
 
 <p>Nimで条件によって処理を変えたい場合は、</p>
 
-<p><code>if</code>と<code>case</code>を使う方法があります。</p>
+<p><code>if</code>、<code>case</code>、<code>when</code>を使う方法があります。</p>
 
 <a name="if文"></a>
 <h4>if文<a href="#document-top" title="Go to top"></a></h4>
@@ -4676,14 +4692,151 @@ var eat =
 echo eat # "eating 🍎"
 </code></pre>
 
+<a name="case文"></a>
+<h4>case文<a href="#document-top" title="Go to top"></a></h4>
+
+<p><code>case</code>は、多言語で言う<code>switch</code>のようなものです。</p>
+
+<p><code>case</code>を宣言した後に評価したい物を書き、</p>
+
+<p><code>of</code>を使って分岐していきます。</p>
+
+<pre><code class="nim">var fruit = "apple"
+
+case fruit
+of "apple":
+  echo "apppooooo!"
+else:
+  echo "not apple"
+
+## 動作は同じですが、caseでインデントもできます
+case fruit:
+  of "apple":
+    echo "appow!"
+  else:
+    echo "not apple"
+</code></pre>
+
+<p>if文と同じく、変数代入時でも使うことが出来ます。</p>
+
+<pre><code class="nim">let
+  fruit = "🍎"
+
+var eat =
+  case fruit
+  of "🍎":
+    "eating 🍎"
+  else:
+    "something want to eat..."
+
+echo eat # "eating 🍎"
+</code></pre>
+
+<a name="when文"></a>
+<h4>when文<a href="#document-top" title="Go to top"></a></h4>
+
+<p><code>when</code>は少し特殊で、コンパイル時に評価されます。</p>
+
+<p>なので、例えばWindowsとそれ以外のプラットフォームでインポートするモジュールを分けたい時などで重宝します。</p>
+
+<pre><code class="nim">when defined(windows):
+  import winlean
+else:
+  import posix
+</code></pre>
+
+<p>他にも、<code>int</code>型などはシステムによって違うサイズになったりするので、こんな例もあります。</p>
+
+<pre><code class="nim">when sizeof(int) == 2:
+  echo "running on a 16 bit system!"
+elif sizeof(int) == 4:
+  echo "running on a 32 bit system!"
+elif sizeof(int) == 8:
+  echo "running on a 64 bit system!"
+else:
+  echo "cannot happen!"
+</code></pre>
+
 <a name="ループ"></a>
 <h3>ループ<a href="#document-top" title="Go to top"></a></h3>
+
+<p>Nimのループは、</p>
+
+<p><code>for</code>、<code>while</code>の二種類があります。</p>
+
+<a name="for文"></a>
+<h4>for文<a href="#document-top" title="Go to top"></a></h4>
+
+<p>Nimの<code>for</code>は、Pythonと似ています。</p>
+
+<p>まずは例を見てみましょう。</p>
+
+<pre><code class="nim">for i in countup(0, 10):
+  echo i
+</code></pre>
+
+<p>これは0から10までを標準出力に表示する物です。</p>
+
+<p><code>in</code>の後にはイテレータである<code>countup</code>がコールされています。</p>
+
+<p><code>countup</code>は<code>0 .. 10</code>と書くこともでき、</p>
+
+<p><code>0 ..&lt; 10</code>とすると10を含まない呼び出しになります。</p>
+
+<pre><code class="nim">for i in 0 ..&lt; 10:
+  echo i # 0 ~ 9
+</code></pre>
+
+<p>また、配列の中身を一つずつ取り出すことも出来ます。</p>
+
+<pre><code class="nim">let str = "Hello"
+
+for ch in str:
+  echo ch
+
+## H
+## e
+## l
+## l
+## o
+</code></pre>
+
+<a name="while文"></a>
+<h4>while文<a href="#document-top" title="Go to top"></a></h4>
 
 <a name="配列"></a>
 <h3>配列<a href="#document-top" title="Go to top"></a></h3>
 
 <a name="型"></a>
 <h3>型<a href="#document-top" title="Go to top"></a></h3>
+
+<p>Nimの型は様々でとても多いですが、順番にゆっくり見ていきましょう。</p>
+
+<a name="プリミティブ型"></a>
+<h4>プリミティブ型<a href="#document-top" title="Go to top"></a></h4>
+
+<p>まずは基本的な型から見ていきましょう！</p>
+
+<a name="Boolean"></a>
+<h5>Boolean<a href="#document-top" title="Go to top"></a></h5>
+
+<p>NimのBoolean型には、<code>true</code>と<code>false</code>の二種類だけです。</p>
+
+<p>評価するための演算子は、</p>
+
+<p><code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>=&gt;</code> に加えて、</p>
+
+<p><code>and</code>, <code>not</code>, <code>or</code>, <code>xor</code> もあります</p>
+
+<pre><code class="nim">var
+  x = 0
+  y = 1
+
+if x == y:
+  echo "x and y is same value."
+elif x != y:
+  echo "x and y is not same value."
+</code></pre>
 
 <a name="関数"></a>
 <h3>関数<a href="#document-top" title="Go to top"></a></h3>
@@ -4692,7 +4845,7 @@ echo eat # "eating 🍎"
 <h3>オブジェクト<a href="#document-top" title="Go to top"></a></h3>
     </div>
     <div id="footer">
-      <p><span class="copy"></span> mofu &ndash; February 21, 2018</p>
+      <p><span class="copy"></span> mofu &ndash; February 24, 2018</p>
       <p><span>Powered by</span> <a href="https://h3rald.com/hastyscribe"><span class="hastyscribe"></span></a></p>
     </div>
   </div>
