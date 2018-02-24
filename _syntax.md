@@ -140,7 +140,7 @@ echo "The Quick Brown Fox"[4 .. 8] # Quick
 
 Nimで条件によって処理を変えたい場合は、
 
-`if`と`case`を使う方法があります。
+`if`、`case`、`when`を使う方法があります。
 
 ### if文
 
@@ -177,11 +177,105 @@ var eat =
 echo eat # "eating 🍎"
 ```
 
+### case文
+
+`case`は、多言語で言う`switch`のようなものです。
+
+`case`を宣言した後に評価したい物を書き、
+
+`of`を使って分岐していきます。
+
+```nim
+var fruit = "apple"
+
+case fruit
+of "apple":
+  echo "apppooooo!"
+else:
+  echo "not apple"
+
+# 動作は同じですが、caseでインデントもできます
+case fruit:
+  of "apple":
+    echo "appow!"
+  else:
+    echo "not apple"
+```
+
+if文と同じく、変数代入時でも使うことが出来ます。
+
+```nim
+let
+  fruit = "🍎"
+
+var eat =
+  case fruit
+  of "🍎":
+    "eating 🍎"
+  else:
+    "something want to eat..."
+
+echo eat # "eating 🍎"
+```
+
+### when文
+
+`when`は少し特殊で、コンパイル時に評価されます。
+
+なので、例えばWindowsとそれ以外のプラットフォームでインポートするモジュールを分けたい時などで重宝します。
+
+```nim
+when defined(windows):
+  import winlean
+else:
+  import posix
+```
+
+他にも、`int`型などはシステムによって違うサイズになったりするので、こんな例もあります。
+
+```nim
+when sizeof(int) == 2:
+  echo "running on a 16 bit system!"
+elif sizeof(int) == 4:
+  echo "running on a 32 bit system!"
+elif sizeof(int) == 8:
+  echo "running on a 64 bit system!"
+else:
+  echo "cannot happen!"
+```
+
 ## ループ
 
 ## 配列
 
 ## 型
+
+Nimの型は様々でとても多いですが、順番にゆっくり見ていきましょう。
+
+### プリミティブ型
+
+まずは基本的な型から見ていきましょう！
+
+#### Boolean
+
+NimのBoolean型には、`true`と`false`の二種類だけです。
+
+評価するための演算子は、
+
+`==`, `!=`, `<`, `>`, `<=`, `=>` に加えて、
+
+`and`, `not`, `or`, `xor` もあります
+
+```nim
+var
+  x = 0
+  y = 1
+
+if x == y:
+  echo "x and y is same value."
+elif x != y:
+  echo "x and y is not same value."
+```
 
 ## 関数
 
