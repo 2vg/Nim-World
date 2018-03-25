@@ -4379,7 +4379,12 @@ div .terminal {
     <li><a href="#while文">while文</a></li>
    </ul>
    </li>
-   <li><a href="#配列">配列</a></li>
+   <li><a href="#配列">配列</a>
+   <ul>
+    <li><a href="#array">array</a></li>
+    <li><a href="#seq">seq</a></li>
+   </ul>
+   </li>
    <li><a href="#型">型</a>
    <ul>
     <li><a href="#プリミティブ型">プリミティブ型</a>
@@ -4804,8 +4809,73 @@ for ch in str:
 <a name="while文"></a>
 <h4>while文<a href="#document-top" title="Go to top"></a></h4>
 
+<p>Nimの<code>while</code>文は他の言語とほぼ同じ感じです。</p>
+
+<pre><code class="nim">var num = 0
+
+while num &lt; 10:
+  echo num
+  inc(num)
+
+## echo 0 ~ 9
+</code></pre>
+
+<div class="tip"><p>Tip</p>
+
+<p><code>inc()</code>は引数の数を1インクリメントする関数です</p></div>
+
 <a name="配列"></a>
 <h3>配列<a href="#document-top" title="Go to top"></a></h3>
+
+<p>配列は複数の値を扱う際に便利なデータ構造ですが、Nimでは少し配列の扱いに癖があるので、ゆっくり見ていきましょう。</p>
+
+<a name="array"></a>
+<h4>array<a href="#document-top" title="Go to top"></a></h4>
+
+<p><code>array</code>は静的な配列で、サイズが固定化される配列です。
+宣言は型で<code>array[0, T]</code>、もしくは直接<code>[]</code>を使って変数に代入します。</p>
+
+<pre><code class="nim">var
+  arr: array[5, string]
+  arr2 = ["Hello ", "World", "!"]
+
+echo arr  # [nil, nil, nil, nil, nil]
+echo arr2 # ["Hello ", "World", "!"]
+
+arr[0] = "apple"
+
+echo arr[0] # apple
+
+for c in arr2:
+  stdout.write(c) # Hello World!
+</code></pre>
+
+<a name="seq"></a>
+<h4>seq<a href="#document-top" title="Go to top"></a></h4>
+
+<p><code>seq</code>は動的な配列で、サイズが可変です。
+型の宣言では<code>seq[T]</code>ですが、中身が作られていないため、<code>[0]</code>のアクセスでもエラーが出てしまいます。
+なので通常は<code>var arr = newSeq[T](0)</code>, もしくは直接<code>@[]</code>を使って変数に代入します。</p>
+
+<pre><code class="nim">var
+  arr = newSeq[string]()
+  arr2 = @["Hello "]
+
+echo arr  # @[]
+echo arr2 # @["Hello "]
+
+arr.add("apple")
+
+echo arr[0] # apple
+
+## echo arr[1] -&gt; error
+
+arr2.add("World")
+arr2.add("!")
+
+for c in arr2:
+  stdout.write(c) # Hello World!
+</code></pre>
 
 <a name="型"></a>
 <h3>型<a href="#document-top" title="Go to top"></a></h3>
@@ -4845,7 +4915,7 @@ elif x != y:
 <h3>オブジェクト<a href="#document-top" title="Go to top"></a></h3>
     </div>
     <div id="footer">
-      <p><span class="copy"></span> mofu &ndash; February 24, 2018</p>
+      <p><span class="copy"></span> mofu &ndash; March 25, 2018</p>
       <p><span>Powered by</span> <a href="https://h3rald.com/hastyscribe"><span class="hastyscribe"></span></a></p>
     </div>
   </div>
