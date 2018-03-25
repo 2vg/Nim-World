@@ -291,7 +291,74 @@ for ch in str:
 
 ### while文
 
+Nimの`while`文は他の言語とほぼ同じ感じです。
+
+```nim
+var num = 0
+
+while num < 10:
+  echo num
+  inc(num)
+
+# echo 0 ~ 9
+```
+
+> %tip%
+> Tip
+> 
+> `inc()`は引数の数を1インクリメントする関数です
+
 ## 配列
+
+配列は複数の値を扱う際に便利なデータ構造ですが、Nimでは少し配列の扱いに癖があるので、ゆっくり見ていきましょう。
+
+### array
+
+`array`は静的な配列で、サイズが固定化される配列です。
+宣言は型で`array[0, T]`、もしくは直接`[]`を使って変数に代入します。
+
+```nim
+var
+  arr: array[5, string]
+  arr2 = ["Hello ", "World", "!"]
+
+echo arr  # [nil, nil, nil, nil, nil]
+echo arr2 # ["Hello ", "World", "!"]
+
+arr[0] = "apple"
+
+echo arr[0] # apple
+
+for c in arr2:
+  stdout.write(c) # Hello World!
+```
+
+### seq
+
+`seq`は動的な配列で、サイズが可変です。
+型の宣言では`seq[T]`ですが、中身が作られていないため、`[0]`のアクセスでもエラーが出てしまいます。
+なので通常は`var arr = newSeq[T](0)`, もしくは直接`@[]`を使って変数に代入します。
+
+```nim
+var
+  arr = newSeq[string]()
+  arr2 = @["Hello "]
+
+echo arr  # @[]
+echo arr2 # @["Hello "]
+
+arr.add("apple")
+
+echo arr[0] # apple
+
+# echo arr[1] -> error
+
+arr2.add("World")
+arr2.add("!")
+
+for c in arr2:
+  stdout.write(c) # Hello World!
+```
 
 ## 型
 
