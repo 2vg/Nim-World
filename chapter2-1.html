@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>序数型</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="preload" href="/assets/css/8.styles.38aff4fb.css" as="style"><link rel="preload" href="/assets/js/app.d27c8500.js" as="script"><link rel="preload" href="/assets/js/5.2ca2a4d0.js" as="script"><link rel="prefetch" href="/assets/js/1.d5463e37.js"><link rel="prefetch" href="/assets/js/2.fc574eea.js"><link rel="prefetch" href="/assets/js/3.d036d836.js"><link rel="prefetch" href="/assets/js/4.d2698039.js"><link rel="prefetch" href="/assets/js/0.51f88710.js"><link rel="prefetch" href="/assets/js/6.a6017c2f.js"><link rel="prefetch" href="/assets/js/7.35d1e0f9.js">
+    <link rel="stylesheet" href="/assets/css/8.styles.38aff4fb.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/" class="home-link router-link-active"></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><!----></div></header><div class="sidebar-mask"></div><div class="sidebar"><!----><ul class="sidebar-links"><li><a href="/" class="sidebar-link">Introduction</a></li><li><a href="/chapter1.html" class="sidebar-link">1: Dive To Nim 👑</a></li><li><div class="sidebar-group"><p class="sidebar-heading"><span></span><!----></p><ul class="sidebar-group-items"><li><a href="/chapter1-1.html" class="sidebar-link">1-1: こんにちは！Nimの世界！</a></li></ul></div></li><li><a href="/chapter2.html" class="sidebar-link">2: 様々な型</a></li><li><div class="sidebar-group"><p class="sidebar-heading open"><span></span><!----></p><ul class="sidebar-group-items"><li><a href="/chapter2-1.html" class="active sidebar-link">2-1: 序数型</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/chapter2-1.html#数値型" class="sidebar-link">数値型</a></li><li class="sidebar-sub-header"><a href="/chapter2-1.html#文字型" class="sidebar-link">文字型</a></li><li class="sidebar-sub-header"><a href="/chapter2-1.html#ブーリアン型" class="sidebar-link">ブーリアン型</a></li><li class="sidebar-sub-header"><a href="/chapter2-1.html#列挙型" class="sidebar-link">列挙型</a></li></ul></li><li><a href="/chapter2-2.html" class="sidebar-link">2-2: 浮動小数点型</a></li><li><a href="/chapter2-3.html" class="sidebar-link">2-3: 文字列型</a></li><li><a href="/chapter2-4.html" class="sidebar-link">2-4: 構造化型</a></li></ul></div></li></ul></div><div class="page"><div class="content"><h1 id="序数型"><a href="#序数型" aria-hidden="true" class="header-anchor">#</a> 序数型</h1><h2 id="数値型"><a href="#数値型" aria-hidden="true" class="header-anchor">#</a> 数値型</h2><ul><li>符号付き整数 <code>int8</code>, <code>int16</code>, <code>int32</code>, <code>int64</code>, <code>int</code> (<code>int</code>はポインターのサイズと同じです)</li><li>符号無し整数 符号付き整数の型の先頭それぞれに<code>u</code>を付けた物</li></ul><p>それぞれのデータの最後に<code>'i32</code>, <code>'u64</code>のようなサフィックスをつけることでデータのサイズを変更することが出来ますが、通常必要はありません。</p><p>型推論では、通常のint型は<code>low(int32)</code>から<code>high(int32)</code>の範囲の値で、それ以外は<code>int64</code>になります。</p><p>また、<code>0xXX</code>, <code>0oXX</code>,  <code>0bXX or 0BXX</code>を使用することでそれぞれ16進数、8進数、2進数を表すことが出来ます。</p><p>アンダースコア<code>_</code>を使うことで可読性を上げることもできます。</p><pre class="language-nim"><code><span class="token keyword">var</span>
+  a<span class="token operator">:</span> int <span class="token operator">=</span> <span class="token number">0x0A</span>
+  b<span class="token operator">:</span> int64 <span class="token operator">=</span> <span class="token number">127'i64</span>
+  c <span class="token operator">=</span> <span class="token number">0o10</span>
+  d <span class="token operator">=</span> <span class="token number">0b0101_0101</span>
+</code></pre><p><code>int</code>はマシンのポインタサイズに依存するので、例えばサイズごとに異なる挙動をさせたりすることが可能です。</p><pre class="language-nim"><code><span class="token keyword">const</span> ptrSize <span class="token operator">=</span> <span class="token function">sizeof</span><span class="token punctuation">(</span>int<span class="token punctuation">)</span>
+
+<span class="token keyword">when</span> <span class="token function">sizeof</span><span class="token punctuation">(</span>int<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">2</span><span class="token operator">:</span>
+  echo <span class="token string">&quot;running on a 16 bit system!&quot;</span>
+<span class="token keyword">elif</span> <span class="token function">sizeof</span><span class="token punctuation">(</span>int<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">4</span><span class="token operator">:</span>
+  echo <span class="token string">&quot;running on a 32 bit system!&quot;</span>
+<span class="token keyword">elif</span> <span class="token function">sizeof</span><span class="token punctuation">(</span>int<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">8</span><span class="token operator">:</span>
+  echo <span class="token string">&quot;running on a 64 bit system!&quot;</span>
+<span class="token keyword">else</span><span class="token operator">:</span>
+  echo <span class="token string">&quot;cannot happen!&quot;</span>
+</code></pre><h2 id="文字型"><a href="#文字型" aria-hidden="true" class="header-anchor">#</a> 文字型</h2><ul><li>文字 <code>char</code> 基本的に<code>uint8</code>のエイリアスタイプです</li></ul><p><code>char</code>のサイズは1バイトなので、普通はUTF-8を扱うことは出来ないのですが、Nimは結果的にUTF-8を適切に処理することができます。</p><p>内部で<code>array[char, int]</code>や<code>set[char]</code>の型を使用して効率的に処理しています。</p><p>また、<a href="https://nim-lang.org/docs/unicode.html" target="_blank" rel="noopener noreferrer">unicode</a>モジュールを使用することで<code>Rune</code>型が使用できるようになり、それは任意のUnicode文字を直接表現することができます。</p><h2 id="ブーリアン型"><a href="#ブーリアン型" aria-hidden="true" class="header-anchor">#</a> ブーリアン型</h2><p>Nimのブーリアン型は、<code>true</code>と<code>false</code>の2種類のみです。</p><p>主に条件分岐で使用します。</p><pre class="language-nim"><code><span class="token keyword">const</span> boo <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">if</span> boo <span class="token operator">==</span> <span class="token number">0</span><span class="token operator">:</span>
+  echo <span class="token string">&quot;boo is 0&quot;</span>
+<span class="token keyword">else</span><span class="token operator">:</span>
+  echo <span class="token string">&quot;boo is &quot;</span> <span class="token operator">&amp;</span> boo
+</code></pre><h2 id="列挙型"><a href="#列挙型" aria-hidden="true" class="header-anchor">#</a> 列挙型</h2></div><!----><div class="content page-nav"><p class="inner"><span class="prev">
+        ← <a href="/chapter2.html" class="prev">
+          2: 様々な型
+        </a></span><span class="next"><a href="/chapter2-2.html">
+          2-2: 浮動小数点型
+        </a> →
+      </span></p></div></div></div></div>
+    <script src="/assets/js/5.2ca2a4d0.js" defer></script><script src="/assets/js/app.d27c8500.js" defer></script>
+  </body>
+</html>
