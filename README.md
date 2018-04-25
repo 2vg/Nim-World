@@ -1,4 +1,4 @@
-# 👑 Nim - World 👑
+# Nim-World
 
 > Nim言語の日本語解説文書です。
 
@@ -8,8 +8,33 @@ Nim言語の使い方などを日本語で書き記したものです。
 
 お手伝いさん急募。
 
-## Latest Build Preview
-[preview](https://htmlpreview.github.io/?https://github.com/2vg/Nim-World/blob/master/build/index.html)
+## reqire
+- Node.js
+- vuepress
+
+## install
+if not installed vuepress,
+
+```shell
+npm i -g vuepress
+```
+
+already installed or after install,
+
+```shell
+git clone https://github.com/2vg/Nim-World
+```
+
+## build
+```shell
+vuepress dev # start dev server localhost:8080
+```
+
+or
+
+```shell
+vuepress build # build static file to src/.vuepress/dist
+```
 
 ## Maintainer
 - [mofu](https://twitter.com/mfqn)
