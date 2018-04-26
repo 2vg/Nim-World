@@ -36,6 +36,8 @@ jobs:
 
       # run build
       - run: npm run nw:build
+      # deploy
+      - run: ./deploy-ghpages.sh src/.vuepress/dist
 
   deploy:
     machine:
