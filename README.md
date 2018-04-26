@@ -9,7 +9,7 @@ Nim言語の使い方などを日本語で書き記したものです。
 お手伝いさん急募。
 
 ## preview
-[ni-vg.com/nim](https://ni-vg.com/nim/)
+[Nim-World](https://2vg.github.io/Nim-World)
 
 ## reqire
 - Node.js
