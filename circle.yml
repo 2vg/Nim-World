@@ -34,7 +34,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run build
-      - run: vue build src
+      - run: vuepress build src
 
 general:
   branches:
