@@ -4,24 +4,7 @@
 #
 version: 2
 
-machine:
-  node:
-    version: 9.1.1
-
-general:
-  branches:
-    ignore:
-      - gh-pages
-
-test:
-  override:
-    - exit 0
-
-deployment:
-  staging:
-    branch: master
-    commands:
-      - ./deploy-ghpages.sh src/.vuepress/dist
+jobs:
   build:
     docker:
       # specify the version you desire here
@@ -53,3 +36,16 @@ deployment:
 
       # run build
       - run: npm run nw:build
+
+  deploy:
+    machine:
+      enabled: true
+    working_directory: ~/repo
+    environment:
+      GH_EMAIL: "mail@ni-vg.com"
+      GH_NAME: "2vg"
+    steps:
+      - checkout
+      - run:
+          name: Deploy gh-pages
+          command: ./deploy-ghpages.sh src/.vuepress/dist
