@@ -6,7 +6,7 @@
     "name": "2vg"
   },
   "devDependencies": {
-    "vuepress": "^0.3.1"
+    "vuepress": "^0.8.4"
   },
   "scripts": {
     "nw:build": "vuepress build src",
