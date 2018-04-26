@@ -3,6 +3,16 @@
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
 version: 2
+
+general:
+  branches:
+    ignore:
+      - gh-pages
+
+test:
+  override:
+    - exit 0
+
 jobs:
   build:
     docker:
@@ -35,18 +45,8 @@ jobs:
 
       # run build
       - run: npm run nw:build
-
-general:
-  branches:
-    ignore:
-      - gh-pages
-
-test:
-  override:
-    - exit 0
-
-deployment:
-  staging:
-    branch: master
-    commands:
-      - ./deploy-ghpages.sh src/.vuepress/dist
+  deployment:
+    staging:
+      branch: master
+      commands:
+        - ./deploy-ghpages.sh src/.vuepress/dist
