@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:8
+      - image: circleci/node:9
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -49,7 +49,4 @@ deployment:
   staging:
     branch: master
     commands:
-      - sed -e "s/base\: \"\/\"/base\: \"\/Nim-World\/\"/" src/.vuepress/config.js > tmp
-      - mv tmp src/.vuepress/config.js
-      - vuepress build src
       - ./deploy-ghpages.sh src/.vuepress/dist
