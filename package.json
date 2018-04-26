@@ -1,0 +1,15 @@
+{
+  "name": "Nim-World",
+  "description": "Nim-World is jp's document of Nim-lang.",
+  "version": "0.1.0",
+  "author": {
+    "name": "2vg"
+  },
+  "devDependencies": {
+    "vuepress": "^0.3.1"
+  },
+  "scripts": {
+    "nw:build": "vuepress build src",
+    "nw:dev": "vuepress dev src",
+  }
+}
