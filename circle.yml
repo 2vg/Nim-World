@@ -17,6 +17,10 @@ jobs:
 
     working_directory: ~/repo
 
+    environment:
+      GH_EMAIL: "mail@ni-vg.com"
+      GH_NAME: "2vg"
+
     steps:
       - checkout
 
@@ -37,17 +41,5 @@ jobs:
       # run build
       - run: npm run nw:build
       # deploy
+      - run: chmod +x deploy-ghpages.sh
       - run: ./deploy-ghpages.sh src/.vuepress/dist
-
-  deploy:
-    machine:
-      enabled: true
-    working_directory: ~/repo
-    environment:
-      GH_EMAIL: "mail@ni-vg.com"
-      GH_NAME: "2vg"
-    steps:
-      - checkout
-      - run:
-          name: Deploy gh-pages
-          command: ./deploy-ghpages.sh src/.vuepress/dist

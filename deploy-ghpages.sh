@@ -4,6 +4,9 @@
 # abort the script if there is a non-zero error
 set -e
 
+# clean build test dist
+rm -rf src/.vuepress/dist
+
 # build Nim-World
 sed -e "s/base\: \"\/\"/base\: \"\/Nim-World\/\"/" src/.vuepress/config.js > tmp
 
