@@ -1,5 +1,7 @@
 # Nim-World
 
+[![CircleCI](https://circleci.com/gh/2vg/Nim-World.svg?style=svg)](https://circleci.com/gh/2vg/Nim-World)
+
 > Nim言語の日本語解説文書です。
 
 Nim言語の使い方などを日本語で書き記したものです。
