@@ -1,6 +1,9 @@
 #!/bin/sh
 # ideas used from https://gist.github.com/motemen/8595451
 
+# abort the script if there is a non-zero error
+set -e
+
 # build Nim-World
 sed -e "s/base\: \"\/\"/base\: \"\/Nim-World\/\"/" src/.vuepress/config.js > tmp
 
@@ -9,8 +12,6 @@ mv tmp src/.vuepress/config.js
 vuepress build src
 # build end
 
-# abort the script if there is a non-zero error
-set -e
 
 # show where we are on the machine
 pwd

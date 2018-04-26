@@ -4,6 +4,10 @@
 #
 version: 2
 
+machine:
+  node:
+    version: 9.1.1
+
 general:
   branches:
     ignore:
@@ -18,8 +22,6 @@ deployment:
     branch: master
     commands:
       - ./deploy-ghpages.sh src/.vuepress/dist
-
-jobs:
   build:
     docker:
       # specify the version you desire here
