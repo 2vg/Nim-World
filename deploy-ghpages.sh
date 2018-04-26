@@ -12,7 +12,7 @@ sed -e "s/base\: \"\/\"/base\: \"\/Nim-World\/\"/" src/.vuepress/config.js > tmp
 
 mv tmp src/.vuepress/config.js
 
-vuepress build src
+npm run nw:build
 # build end
 
 
