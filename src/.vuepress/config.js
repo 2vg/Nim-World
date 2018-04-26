@@ -1,5 +1,6 @@
 // .vuepress/config.js
 module.exports = {
+  base: "/",
   themeConfig: {
     sidebar: [
       ['/', 'Introduction'],
