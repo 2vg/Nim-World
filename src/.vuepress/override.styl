@@ -1,0 +1,51 @@
+// colors
+$accentColor  = #9a8700 // default #3eaf7c
+$textColor    = #333    // default #2c3e50
+$borderColor  = #eaecef // default #eaecef
+$codeBgColor  = #292b36 // default #282c34
+$arrowBgColor = #ccc    // default #ccc
+
+// layout
+$navbarHeight = 3.6rem // default 3.6rem
+$sidebarWidth = 20rem  // default 20rem
+$contentWidth = 740px  // default 740px
+
+// responsive breakpoints
+$MQNarrow       = 959px // default 959px
+$MQMobile       = 719px // default 719px
+$MQMobileNarrow = 419px // default 419px
+
+// custom variables for override
+$accentColorDark = #cdb300
+$buttonColor     = #ffe953
+$buttonColorDark = #ffe220
+$linkColor       = #ffe953
+$linkColorLight  = #fff086
+$bgColorDark     = #232733
+$borderColorDark = #171921
+
+.theme-container
+  // Navbar.vue
+  .navbar
+    background-color rgba(#fff, .95)
+    -webkit-backdrop-filter blur(1px)
+
+  // Sidebar.vue
+  .sidebar
+    background-color $bgColorDark
+
+  // SidebarGroup.vue
+  .sidebar-group
+    &:not(.first)
+      margin-top 0
+  .sidebar-heading
+    display none
+
+  // SidebarLink.vue
+  a.sidebar-link
+    color $linkColor
+    &:hover
+      color $linkColorLight
+    &.active
+      color $linkColorLight
+      border-left-color $linkColorLight
