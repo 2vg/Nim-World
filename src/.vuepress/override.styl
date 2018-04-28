@@ -2,7 +2,7 @@
 $accentColor  = #9a8700 // default #3eaf7c
 $textColor    = #333    // default #2c3e50
 $borderColor  = #eaecef // default #eaecef
-$codeBgColor  = #292b36 // default #282c34
+$codeBgColor  = #23242f // default #282c34
 $arrowBgColor = #ccc    // default #ccc
 
 // layout
@@ -16,23 +16,31 @@ $MQMobile       = 719px // default 719px
 $MQMobileNarrow = 419px // default 419px
 
 // custom variables for override
-$accentColorDark = #cdb300
-$buttonColor     = #ffe953
-$buttonColorDark = #ffe220
-$linkColor       = #ffe953
-$linkColorLight  = #fff086
-$bgColorDark     = #232733
-$borderColorDark = #171921
+$accentColorLight = #cdb300
+$buttonColor      = #ffe953
+$buttonColorDark  = #ffe220
+$linkColor        = #ffe953
+$linkColorLight   = #fff086
+$bgColorDark      = #232733
+$sidebarBgColor   = #171921
+$navbarBgColor    = rgba(#fff, .96)
 
 .theme-container
+  @import 'prismjs'
+
   // Navbar.vue
   .navbar
-    background-color rgba(#fff, .95)
-    -webkit-backdrop-filter blur(1px)
+    background-color $navbarBgColor
+    -webkit-backdrop-filter blur(2px)
+
+  // SearchBox.vue
+  .search-box
+    input:not(:focus)
+      background-color transparent
 
   // Sidebar.vue
   .sidebar
-    background-color $bgColorDark
+    background-color $sidebarBgColor
 
   // SidebarGroup.vue
   .sidebar-group
