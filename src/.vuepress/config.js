@@ -1,4 +1,6 @@
 // .vuepress/config.js
+const twemoji = require('twemoji')
+
 module.exports = {
   base: "/",
   themeConfig: {
@@ -22,5 +24,15 @@ module.exports = {
         ]
       },
     ],
+  },
+  markdown: {
+    config: md => {
+      md.renderer.rules.emoji = (token, idx) => {
+        return twemoji.parse(token[idx].content, {
+          folder: 'svg',
+          ext: '.svg'
+        })
+      }
+    }
   }
 }
