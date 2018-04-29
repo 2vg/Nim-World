@@ -11,5 +11,8 @@
   "scripts": {
     "nw:build": "vuepress build src",
     "nw:dev": "vuepress dev src"
+  },
+  "dependencies": {
+    "twemoji": "^2.5.1"
   }
 }
