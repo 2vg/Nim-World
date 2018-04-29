@@ -1,6 +1,13 @@
 // .vuepress/config.js
 module.exports = {
   base: "/",
+  locales: {
+    '/': {
+      lang: 'ja-JP',
+      title: 'NimWorld',
+      description: 'Nim言語の日本語解説文書'
+    }
+  },
   themeConfig: {
     sidebar: [
       ['/', 'Introduction'],
