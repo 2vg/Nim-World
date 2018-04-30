@@ -57,7 +57,6 @@ var マジ卍 = "ﾏｼﾞ ﾏﾝｼﾞｨｨｨｨｨ!!!!!"
 例えば悪い例として、以下のようなコードがあります。
 
 ```nim
-let x = readLine(stdin)
 const x = readLine(stdin)
 ```
 
@@ -68,3 +67,7 @@ const x = readLine(stdin)
 なので、このコードはコンパイル出来ません。
 
 コンパイル前に既に値が決まっており、以後変更しない物であれば`const`、それ以外では`var`や`let`を使いましょう。
+
+```nim
+let x = readLine(stdin)
+```
