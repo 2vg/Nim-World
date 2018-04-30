@@ -40,7 +40,7 @@ module.exports = {
           ['/when', '4-3: when']
         ]
       },
-      ['/chapter5', '5: ループ'],
+      ['/loop', '5: ループ'],
       {
         collapsable: false,
         children: [
