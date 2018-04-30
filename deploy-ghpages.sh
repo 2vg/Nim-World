@@ -8,7 +8,7 @@ set -e
 rm -rf src/.vuepress/dist
 
 # build Nim-World
-sed -e "s/base\: \"\/\"/base\: \"\/Nim-World\/\"/" src/.vuepress/config.js > tmp
+sed -e "s/base\: '\/'/base\: '\/Nim-World\/'/" src/.vuepress/config.js > tmp
 
 mv tmp src/.vuepress/config.js
 
