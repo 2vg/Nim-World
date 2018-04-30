@@ -31,7 +31,7 @@ module.exports = {
           ['/chapter3-4', '3-4: 構造化型']
         ]
       },
-/*      ['/chapter4', '4: 条件'],
+      ['/chapter4', '4: 条件'],
       {
         collapsable: false,
         children: [
@@ -49,7 +49,7 @@ module.exports = {
           ['/chapter5-3', '5-3: iterator']
         ]
       },
-      ['/chapter6', '6: 関数'],
+/*      ['/chapter6', '6: 関数'],
       ['/chapter7', '7: 参照'],
       ['/chapter8', '8: テスト'],
       ['/chapter9', '9: モジュールとパッケージ'],
