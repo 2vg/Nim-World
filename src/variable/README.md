@@ -47,9 +47,6 @@ var マジ卍 = "ﾏｼﾞ ﾏﾝｼﾞｨｨｨｨｨ!!!!!"
 
 ```nim
 const x = readLine(stdin)
-
-# 正しくは let を使う．
-# let x = readLine(stdin)
 ```
 
 `readLine`は、標準入力から一行読み取る関数です。
@@ -59,3 +56,7 @@ const x = readLine(stdin)
 なので、このコードはコンパイル出来ません。
 
 コンパイル前に既に値が決まっており、以後変更しない物であれば`const`、それ以外では`var`や`let`を使いましょう。
+
+```nim
+let x = readLine(stdin)
+```
