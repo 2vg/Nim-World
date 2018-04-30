@@ -13,40 +13,40 @@ module.exports = {
   themeConfig: {
     sidebar: [
       ['/', 'Introduction'],
-      ['/chapter1', '1: Dive To Nim 👑'],
+      ['/divetonim', '1: Dive To Nim 👑'],
       {
         collapsable: false,
         children: [
-          ['/chapter1-1', '1-1: こんにちは！Nimの世界！']
+          ['/hellonim', '1-1: こんにちは！Nimの世界！']
         ]
       },
-      ['/chapter2', '2: 変数'],
-      ['/chapter3', '3: 様々な型'],
+      ['/variable', '2: 変数'],
+      ['/types', '3: 様々な型'],
       {
         collapsable: false,
         children: [
-          ['/chapter3-1', '3-1: 序数型'],
-          ['/chapter3-2', '3-2: 浮動小数点型'],
-          ['/chapter3-3', '3-3: 文字列型'],
-          ['/chapter3-4', '3-4: 構造化型']
+          ['/ordinal', '3-1: 序数型'],
+          ['/floating', '3-2: 浮動小数点型'],
+          ['/string', '3-3: 文字列型'],
+          ['/structuretype', '3-4: 構造化型']
         ]
       },
-      ['/chapter4', '4: 条件'],
+      ['/condition', '4: 条件'],
       {
         collapsable: false,
         children: [
-          ['/chapter4-1', '4-1: if'],
-          ['/chapter4-2', '4-2: case'],
-          ['/chapter4-3', '4-3: when']
+          ['/if', '4-1: if'],
+          ['/case', '4-2: case'],
+          ['/when', '4-3: when']
         ]
       },
       ['/chapter5', '5: ループ'],
       {
         collapsable: false,
         children: [
-          ['/chapter5-1', '5-1: while'],
-          ['/chapter5-2', '5-2: for'],
-          ['/chapter5-3', '5-3: iterator']
+          ['/while', '5-1: while'],
+          ['/for', '5-2: for'],
+          ['/iterator', '5-3: iterator']
         ]
       },
 /*      ['/chapter6', '6: 関数'],
