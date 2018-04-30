@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>NimWorld | 変数と定数</title>
+    <meta name="description" content="Nim言語の日本語解説文書">
+    
+    
+    <link rel="preload" href="/assets/css/17.styles.06052d05.css" as="style"><link rel="preload" href="/assets/js/app.ca0c8961.js" as="script"><link rel="preload" href="/assets/js/0.d00458e2.js" as="script"><link rel="prefetch" href="/assets/js/9.8ce81005.js"><link rel="prefetch" href="/assets/js/1.814fa1b6.js"><link rel="prefetch" href="/assets/js/2.a1681f15.js"><link rel="prefetch" href="/assets/js/3.54b19c08.js"><link rel="prefetch" href="/assets/js/4.6085a666.js"><link rel="prefetch" href="/assets/js/5.ddaaa430.js"><link rel="prefetch" href="/assets/js/6.6ef28b39.js"><link rel="prefetch" href="/assets/js/7.f5907587.js"><link rel="prefetch" href="/assets/js/8.73e16a52.js"><link rel="prefetch" href="/assets/js/10.30cdbdd3.js"><link rel="prefetch" href="/assets/js/11.a3cbe010.js"><link rel="prefetch" href="/assets/js/12.a5c7ec9a.js"><link rel="prefetch" href="/assets/js/13.587b00c8.js"><link rel="prefetch" href="/assets/js/14.0a44da86.js"><link rel="prefetch" href="/assets/js/15.70b970a7.js"><link rel="prefetch" href="/assets/js/16.11864878.js">
+    <link rel="stylesheet" href="/assets/css/17.styles.06052d05.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/" class="home-link router-link-active"><!----><span class="site-name">
+      NimWorld
+    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><!----></div></header><div class="sidebar-mask"></div><div class="sidebar"><!----><ul class="sidebar-links"><li><a href="/" class="sidebar-link">Introduction</a></li><li><a href="/divetonim/" class="sidebar-link">Dive To Nim 👑</a></li><li><div class="sidebar-group"><p class="sidebar-heading"><span></span><!----></p><ul class="sidebar-group-items"><li><a href="/divetonim/hellonim.html" class="sidebar-link">こんにちは！Nimの世界！</a></li></ul></div></li><li><a href="/variable/" class="active sidebar-link">変数と定数</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/variable/#変数" class="sidebar-link">変数</a></li><li class="sidebar-sub-header"><a href="/variable/#定数" class="sidebar-link">定数</a></li></ul></li><li><div class="sidebar-group"><p class="sidebar-heading"><span></span><!----></p><ul class="sidebar-group-items"></ul></div></li><li><a href="/types/" class="sidebar-link">基本データ型</a></li><li><div class="sidebar-group"><p class="sidebar-heading"><span></span><!----></p><ul class="sidebar-group-items"><li><a href="/types/ordinal.html" class="sidebar-link">序数型</a></li><li><a href="/types/floating.html" class="sidebar-link">浮動小数点型</a></li><li><a href="/types/string.html" class="sidebar-link">文字列型</a></li><li><a href="/types/structured.html" class="sidebar-link">構造化型</a></li></ul></div></li><li><a href="/condition/" class="sidebar-link">条件</a></li><li><div class="sidebar-group"><p class="sidebar-heading"><span></span><!----></p><ul class="sidebar-group-items"><li><a href="/condition/if.html" class="sidebar-link">if</a></li><li><a href="/condition/case.html" class="sidebar-link">case</a></li><li><a href="/condition/when.html" class="sidebar-link">when</a></li></ul></div></li><li><a href="/loop/" class="sidebar-link">ループ</a></li><li><div class="sidebar-group"><p class="sidebar-heading"><span></span><!----></p><ul class="sidebar-group-items"><li><a href="/loop/while.html" class="sidebar-link">while</a></li><li><a href="/loop/for.html" class="sidebar-link">for</a></li><li><a href="/loop/iterator.html" class="sidebar-link">iterator</a></li></ul></div></li></ul></div><div class="page"><div class="content"><h1 id="変数と定数"><a href="#変数と定数" aria-hidden="true" class="header-anchor">#</a> 変数と定数</h1><h2 id="変数"><a href="#変数" aria-hidden="true" class="header-anchor">#</a> 変数</h2><p>Nimの変数宣言は二種類あります。</p><table><thead><tr><th>変数</th><th>初期化</th><th>再代入</th></tr></thead><tbody><tr><td>var</td><td>不要</td><td>可能</td></tr><tr><td>let</td><td>必須</td><td>不可能</td></tr></tbody></table><p><code>var</code>は再代入可能な変数宣言で、何度でも値を入れ替える事ができます。</p><p>型は変数名の後ろに<code>:</code>を付け、その後に任意の型を宣言します。</p><pre class="language-nim"><code><span class="token keyword">var</span> x<span class="token operator">:</span> int <span class="token operator">=</span> <span class="token number">0</span>
+x <span class="token operator">=</span> <span class="token number">1</span>
+
+<span class="token comment"># this is error !</span>
+<span class="token comment"># let x: int = 0</span>
+<span class="token comment"># x = 1</span>
+</code></pre><p>Nimには型推論があり、型を省くことが出来ます。</p><p>ただし、特定の条件下では明示的に型を指定しなければならない場合もあります。</p><pre class="language-nim"><code><span class="token keyword">var</span>
+  a <span class="token operator">=</span> <span class="token string">&quot;apple&quot;</span>
+  b <span class="token operator">=</span> <span class="token string">&quot;banana&quot;</span>
+  c <span class="token operator">=</span> <span class="token number">128</span>
+</code></pre><p>これはおまけですが、変数宣言で扱える文字範囲が決まっており、その範囲内であれば変数名にする事ができます。</p><pre class="language-nim"><code><span class="token keyword">var</span> マジ卍 <span class="token operator">=</span> <span class="token string">&quot;ﾏｼﾞ ﾏﾝｼﾞｨｨｨｨｨ!!!!!&quot;</span>
+</code></pre><h2 id="定数"><a href="#定数" aria-hidden="true" class="header-anchor">#</a> 定数</h2><p>2種類の変数の他に、特別な定数シンボルとして<code>const</code>があります。</p><p><code>const</code>はコンパイル時に値が決まっている事が必須で、<code>let</code>と同じように中の値を変更することは出来ません。</p><p>例えば悪い例として、以下のようなコードがあります。</p><pre class="language-nim"><code><span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token function">readLine</span><span class="token punctuation">(</span>stdin<span class="token punctuation">)</span>
+<span class="token keyword">const</span> x <span class="token operator">=</span> <span class="token function">readLine</span><span class="token punctuation">(</span>stdin<span class="token punctuation">)</span>
+</code></pre><p><code>readLine</code>は、標準入力から一行読み取る関数です。</p><p>このコードでは、ユーザーからの入力を<code>const x</code>に入れようとしていますが、これはコンパイル後に決まる値です。</p><p>なので、このコードはコンパイル出来ません。</p><p>コンパイル前に既に値が決まっており、以後変更しない物であれば<code>const</code>、それ以外では<code>var</code>や<code>let</code>を使いましょう。</p></div><!----><div class="content page-nav"><p class="inner"><span class="prev">
+        ← <a href="/divetonim/hellonim.html" class="prev">
+          こんにちは！Nimの世界！
+        </a></span><span class="next"><a href="/types/">
+          基本データ型
+        </a> →
+      </span></p></div></div></div></div>
+    <script src="/assets/js/0.d00458e2.js" defer></script><script src="/assets/js/app.ca0c8961.js" defer></script>
+  </body>
+</html>

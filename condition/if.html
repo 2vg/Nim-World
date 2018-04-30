@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>NimWorld | if</title>
+    <meta name="description" content="Nim言語の日本語解説文書">
+    
+    
+    <link rel="preload" href="/assets/css/17.styles.06052d05.css" as="style"><link rel="preload" href="/assets/js/app.ca0c8961.js" as="script"><link rel="preload" href="/assets/js/13.587b00c8.js" as="script"><link rel="prefetch" href="/assets/js/9.8ce81005.js"><link rel="prefetch" href="/assets/js/1.814fa1b6.js"><link rel="prefetch" href="/assets/js/2.a1681f15.js"><link rel="prefetch" href="/assets/js/3.54b19c08.js"><link rel="prefetch" href="/assets/js/4.6085a666.js"><link rel="prefetch" href="/assets/js/5.ddaaa430.js"><link rel="prefetch" href="/assets/js/6.6ef28b39.js"><link rel="prefetch" href="/assets/js/7.f5907587.js"><link rel="prefetch" href="/assets/js/8.73e16a52.js"><link rel="prefetch" href="/assets/js/0.d00458e2.js"><link rel="prefetch" href="/assets/js/10.30cdbdd3.js"><link rel="prefetch" href="/assets/js/11.a3cbe010.js"><link rel="prefetch" href="/assets/js/12.a5c7ec9a.js"><link rel="prefetch" href="/assets/js/14.0a44da86.js"><link rel="prefetch" href="/assets/js/15.70b970a7.js"><link rel="prefetch" href="/assets/js/16.11864878.js">
+    <link rel="stylesheet" href="/assets/css/17.styles.06052d05.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/" class="home-link router-link-active"><!----><span class="site-name">
+      NimWorld
+    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><!----></div></header><div class="sidebar-mask"></div><div class="sidebar"><!----><ul class="sidebar-links"><li><a href="/" class="sidebar-link">Introduction</a></li><li><a href="/divetonim/" class="sidebar-link">Dive To Nim 👑</a></li><li><div class="sidebar-group"><p class="sidebar-heading"><span></span><!----></p><ul class="sidebar-group-items"><li><a href="/divetonim/hellonim.html" class="sidebar-link">こんにちは！Nimの世界！</a></li></ul></div></li><li><a href="/variable/" class="sidebar-link">変数と定数</a></li><li><div class="sidebar-group"><p class="sidebar-heading"><span></span><!----></p><ul class="sidebar-group-items"></ul></div></li><li><a href="/types/" class="sidebar-link">基本データ型</a></li><li><div class="sidebar-group"><p class="sidebar-heading"><span></span><!----></p><ul class="sidebar-group-items"><li><a href="/types/ordinal.html" class="sidebar-link">序数型</a></li><li><a href="/types/floating.html" class="sidebar-link">浮動小数点型</a></li><li><a href="/types/string.html" class="sidebar-link">文字列型</a></li><li><a href="/types/structured.html" class="sidebar-link">構造化型</a></li></ul></div></li><li><a href="/condition/" class="sidebar-link">条件</a></li><li><div class="sidebar-group"><p class="sidebar-heading open"><span></span><!----></p><ul class="sidebar-group-items"><li><a href="/condition/if.html" class="active sidebar-link">if</a></li><li><a href="/condition/case.html" class="sidebar-link">case</a></li><li><a href="/condition/when.html" class="sidebar-link">when</a></li></ul></div></li><li><a href="/loop/" class="sidebar-link">ループ</a></li><li><div class="sidebar-group"><p class="sidebar-heading"><span></span><!----></p><ul class="sidebar-group-items"><li><a href="/loop/while.html" class="sidebar-link">while</a></li><li><a href="/loop/for.html" class="sidebar-link">for</a></li><li><a href="/loop/iterator.html" class="sidebar-link">iterator</a></li></ul></div></li></ul></div><div class="page"><div class="content"><h1 id="if"><a href="#if" aria-hidden="true" class="header-anchor">#</a> if</h1><p>Nimのifは<code>if-elif-else</code>のような構文で書きます。</p><pre class="language-nim"><code><span class="token keyword">var</span>
+  a <span class="token operator">=</span> <span class="token string">&quot;apple&quot;</span>
+  b <span class="token operator">=</span> <span class="token string">&quot;banana&quot;</span>
+
+<span class="token keyword">if</span> a <span class="token operator">==</span> b<span class="token operator">:</span>
+  echo <span class="token string">&quot;apple is banana :)&quot;</span>
+<span class="token keyword">elif</span> a <span class="token operator">!=</span> b<span class="token operator">:</span>
+  echo <span class="token string">&quot;appppple 🍎&quot;</span>
+  echo <span class="token string">&quot;banaaana 🍌&quot;</span>
+<span class="token keyword">else</span><span class="token operator">:</span>
+  echo <span class="token string">&quot;See you&quot;</span>
+</code></pre><p>また、式としても評価することができ、</p><p>変数への代入で使用することも出来ます。</p><pre class="language-nim"><code><span class="token keyword">let</span>
+  fruit <span class="token operator">=</span> <span class="token string">&quot;🍎&quot;</span>
+
+<span class="token keyword">var</span> eat <span class="token operator">=</span>
+  <span class="token keyword">if</span> fruit <span class="token operator">==</span> <span class="token string">&quot;🍎&quot;</span><span class="token operator">:</span>
+    <span class="token string">&quot;eating 🍎&quot;</span>
+  <span class="token keyword">else</span><span class="token operator">:</span>
+    <span class="token string">&quot;something want to eat...&quot;</span>
+
+echo eat <span class="token comment"># &quot;eating 🍎&quot;</span>
+</code></pre></div><!----><div class="content page-nav"><p class="inner"><span class="prev">
+        ← <a href="/condition/" class="prev router-link-active">
+          条件
+        </a></span><span class="next"><a href="/condition/case.html">
+          case
+        </a> →
+      </span></p></div></div></div></div>
+    <script src="/assets/js/13.587b00c8.js" defer></script><script src="/assets/js/app.ca0c8961.js" defer></script>
+  </body>
+</html>
