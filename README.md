@@ -71,4 +71,6 @@ vuepress build src # build static file to src/.vuepress/dist
 ```
 
 ## Maintainer
-- [mofu](https://twitter.com/mfqn)
+- [mofu](https://twitter.com/mfqn) (owner, and main maintainer.)
+- [rigani_c](https://twitter.com/rigani_c) (beautiful css, and fix some. thx!)
+- [loloiccl](https://github.com/loloiccl) (some fix typo, and more. thx !)
