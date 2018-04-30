@@ -4,7 +4,7 @@
 
 様々な種類がありますが、まずは以下の基本的なデータ型を覚えましょう！
 
-* [序数型](/chapter2-1.html)
-* [浮動小数点型](/chapter2-2.html)
-* [文字列型](/chapter2-3.html)
-* [構造化型](/chapter2-4.html)
+* [序数型](/chapter3-1.html)
+* [浮動小数点型](/chapter3-2.html)
+* [文字列型](/chapter3-3.html)
+* [構造化型](/chapter3-4.html)
