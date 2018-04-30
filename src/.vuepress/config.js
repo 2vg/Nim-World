@@ -1,8 +1,20 @@
 // .vuepress/config.js
+const path = require('path')
 const twemoji = require('twemoji')
 
+const sidebarGroup = (dirName, children = [], collapsable = false) => {
+  let directory = path.join('/', dirName, '/')
+  return [
+    directory,
+    {
+      collapsable,
+      children: children.map(child => path.join(directory, child))
+    }
+  ]
+}
+
 module.exports = {
-  base: "/",
+  base: '/',
   locales: {
     '/': {
       lang: 'ja-JP',
@@ -12,66 +24,44 @@ module.exports = {
   },
   themeConfig: {
     sidebar: [
-      ['/', 'Introduction'],
-      ['/divetonim', '1: Dive To Nim 👑'],
-      {
-        collapsable: false,
-        children: [
-          ['/hellonim', '1-1: こんにちは！Nimの世界！']
-        ]
-      },
-      ['/variable', '2: 変数'],
-      ['/types', '3: 様々な型'],
-      {
-        collapsable: false,
-        children: [
-          ['/ordinal', '3-1: 序数型'],
-          ['/floating', '3-2: 浮動小数点型'],
-          ['/string', '3-3: 文字列型'],
-          ['/structured', '3-4: 構造化型']
-        ]
-      },
-      ['/condition', '4: 条件'],
-      {
-        collapsable: false,
-        children: [
-          ['/if', '4-1: if'],
-          ['/case', '4-2: case'],
-          ['/when', '4-3: when']
-        ]
-      },
-      ['/loop', '5: ループ'],
-      {
-        collapsable: false,
-        children: [
-          ['/while', '5-1: while'],
-          ['/for', '5-2: for'],
-          ['/iterator', '5-3: iterator']
-        ]
-      },
-/*      ['/chapter6', '6: 関数'],
-      ['/chapter7', '7: 参照'],
-      ['/chapter8', '8: テスト'],
-      ['/chapter9', '9: モジュールとパッケージ'],
-      {
-        collapsable: false,
-        children: [
-          ['/chapter9-1', '9-1: モジュール'],
-          ['/chapter9-2', '9-2: パッケージ']
-        ]
-      },
-      ['/chapter10', '10: 高度なNim'],
-      {
-        collapsable: false,
-        children: [
-          ['/chapter10-1', '10-1: マクロ'],
-          ['/chapter10-2', '10-2: ポインタとメモリ'],
-          ['/chapter10-3', '10-3: マルチスレッド'],
-          ['/chapter10-4', '10-4: FFI'],
-          ['/chapter10-5', '10-5: コンパイルオプション'],
-          ['/chapter10-6', '10-6: アセンブリ']
-        ]
-      },*/
+      '/',
+      ...sidebarGroup('divetonim', [
+        'hellonim'
+      ]),
+      ...sidebarGroup('variable'),
+      ...sidebarGroup('types', [
+        'ordinal',
+        'floating',
+        'string',
+        'structured'
+      ]),
+      ...sidebarGroup('condition', [
+        'if',
+        'case',
+        'when'
+      ]),
+      ...sidebarGroup('loop', [
+        'while',
+        'for',
+        'iterator'
+      ]),
+      // ...sidebarGroup('chapter6'), // 関数
+      // ...sidebarGroup('chapter7'), // 参照
+      // ...sidebarGroup('chapter8'), // テスト
+      // // モジュールとパッケージ
+      // ...sidebarGroup('chapter9', [
+      //   'chapter9-1', // モジュール
+      //   'chapter9-2', // パッケージ
+      // ]),
+      // // 高度なNim
+      // ...sidebarGroup('chapter10', [
+      //   'chapter10-1', // マクロ
+      //   'chapter10-2', // ポインタとメモリ
+      //   'chapter10-3', // マルチスレッド
+      //   'chapter10-4', // FFI
+      //   'chapter10-5', // コンパイルオプション
+      //   'chapter10-6', // アセンブリ
+      // ]),
     ],
   },
   markdown: {
