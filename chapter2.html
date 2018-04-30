@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>NimWorld | 変数</title>
+    <meta name="description" content="Nim言語の日本語解説文書">
+    
+    
+    <link rel="preload" href="/Nim-World/assets/css/9.styles.e6ce398e.css" as="style"><link rel="preload" href="/Nim-World/assets/js/app.0cbaec09.js" as="script"><link rel="preload" href="/Nim-World/assets/js/6.86aee82f.js" as="script"><link rel="prefetch" href="/Nim-World/assets/js/5.9da4534e.js"><link rel="prefetch" href="/Nim-World/assets/js/1.b489491f.js"><link rel="prefetch" href="/Nim-World/assets/js/2.9c672395.js"><link rel="prefetch" href="/Nim-World/assets/js/3.5d206725.js"><link rel="prefetch" href="/Nim-World/assets/js/4.5b25db03.js"><link rel="prefetch" href="/Nim-World/assets/js/0.a8023c08.js"><link rel="prefetch" href="/Nim-World/assets/js/7.7eb94c19.js"><link rel="prefetch" href="/Nim-World/assets/js/8.645dedd5.js">
+    <link rel="stylesheet" href="/Nim-World/assets/css/9.styles.e6ce398e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/Nim-World/" class="home-link router-link-active"><!----><span class="site-name">
+      NimWorld
+    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><!----></div></header><div class="sidebar-mask"></div><div class="sidebar"><!----><ul class="sidebar-links"><li><a href="/Nim-World/" class="sidebar-link">Introduction</a></li><li><a href="/Nim-World/chapter1.html" class="sidebar-link">1: Dive To Nim 👑</a></li><li><div class="sidebar-group"><p class="sidebar-heading"><span></span><!----></p><ul class="sidebar-group-items"><li><a href="/Nim-World/chapter1-1.html" class="sidebar-link">1-1: こんにちは！Nimの世界！</a></li></ul></div></li><li><a href="/Nim-World/chapter2.html" class="active sidebar-link">2: 変数</a></li><li><a href="/Nim-World/chapter3.html" class="sidebar-link">3: 様々な型</a></li><li><div class="sidebar-group"><p class="sidebar-heading"><span></span><!----></p><ul class="sidebar-group-items"><li><a href="/Nim-World/chapter3-1.html" class="sidebar-link">3-1: 序数型</a></li><li><a href="/Nim-World/chapter3-2.html" class="sidebar-link">3-2: 浮動小数点型</a></li><li><a href="/Nim-World/chapter3-3.html" class="sidebar-link">3-3: 文字列型</a></li><li><a href="/Nim-World/chapter3-4.html" class="sidebar-link">3-4: 構造化型</a></li></ul></div></li></ul></div><div class="page"><div class="content"><h1 id="変数"><a href="#変数" aria-hidden="true" class="header-anchor">#</a> 変数</h1><p>Nimの変数宣言は三種類あります。</p><table><thead><tr><th>変数</th><th>初期化</th><th>再代入</th></tr></thead><tbody><tr><td>var</td><td>不要</td><td>可能</td></tr><tr><td>let</td><td>必須</td><td>不可能</td></tr></tbody></table><p><code>var</code>は再代入可能な変数宣言で、何度でも値を入れ替える事ができます。</p><p>型は変数名の後ろに<code>:</code>を付け、その後に任意の型を宣言します。</p><pre class="language-nim"><code><span class="token keyword">var</span> x<span class="token operator">:</span> int <span class="token operator">=</span> <span class="token number">0</span>
+x <span class="token operator">=</span> <span class="token number">1</span>
+
+<span class="token comment"># this is error !</span>
+<span class="token comment"># let x: int = 0</span>
+<span class="token comment"># x = 1</span>
+</code></pre><p>Nimには型推論があり、型を省くことが出来ます。</p><p>ただし、特定の条件下では明示的に型を指定しなければならない場合もあります。</p><pre class="language-nim"><code><span class="token keyword">var</span>
+  a <span class="token operator">=</span> <span class="token string">&quot;apple&quot;</span>
+  b <span class="token operator">=</span> <span class="token string">&quot;banana&quot;</span>
+  c <span class="token operator">=</span> <span class="token number">128</span>
+</code></pre><p>これはおまけですが、変数宣言で扱える文字範囲が決まっており、その範囲内であれば変数名にする事ができます。</p><pre class="language-nim"><code><span class="token keyword">var</span> マジ卍 <span class="token operator">=</span> <span class="token string">&quot;ﾏｼﾞ ﾏﾝｼﾞｨｨｨｨｨ!!!!!&quot;</span>
+</code></pre><p>上に上げた2種類の変数他に特別な定数シンボルとして<code>const</code>があります。</p><p><code>const</code>はコンパイル時に値が決まっている事が必須で、<code>let</code>と同じように中の値を変更することは出来ません。</p><p>例えば悪い例として、以下のようなコードがあります。</p><pre class="language-nim"><code><span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token function">readLine</span><span class="token punctuation">(</span>stdin<span class="token punctuation">)</span>
+<span class="token keyword">const</span> x <span class="token operator">=</span> <span class="token function">readLine</span><span class="token punctuation">(</span>stdin<span class="token punctuation">)</span>
+</code></pre><p><code>readLine</code>は、標準入力から一行読み取る関数です。</p><p>このコードでは、ユーザーからの入力を<code>const x</code>に入れようとしていますが、これはコンパイル後に決まる値です。</p><p>なので、このコードはコンパイル出来ません。</p><p>コンパイル前に既に値が決まっており、以後変更しない物であれば<code>const</code>、それ以外では<code>var</code>や<code>let</code>を使いましょう。</p></div><!----><div class="content page-nav"><p class="inner"><span class="prev">
+        ← <a href="/Nim-World/chapter1-1.html" class="prev">
+          1-1: こんにちは！Nimの世界！
+        </a></span><span class="next"><a href="/Nim-World/chapter3.html">
+          3: 様々な型
+        </a> →
+      </span></p></div></div></div></div>
+    <script src="/Nim-World/assets/js/6.86aee82f.js" defer></script><script src="/Nim-World/assets/js/app.0cbaec09.js" defer></script>
+  </body>
+</html>
