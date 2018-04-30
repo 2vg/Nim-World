@@ -36,7 +36,8 @@ module.exports = {
         collapsable: false,
         children: [
           ['/chapter4-1', '4-1: if'],
-          ['/chapter4-2', '4-2: case']
+          ['/chapter4-2', '4-2: case'],
+          ['/chapter4-3', '4-3: when']
         ]
       },
       ['/chapter5', '5: ループ'],
