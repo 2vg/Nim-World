@@ -1,6 +1,15 @@
 // .vuepress/config.js
+const twemoji = require('twemoji')
+
 module.exports = {
   base: "/",
+  locales: {
+    '/': {
+      lang: 'ja-JP',
+      title: 'NimWorld',
+      description: 'Nim言語の日本語解説文書'
+    }
+  },
   themeConfig: {
     sidebar: [
       ['/', 'Introduction'],
@@ -63,5 +72,15 @@ module.exports = {
         ]
       },
     ],
+  },
+  markdown: {
+    config: md => {
+      md.renderer.rules.emoji = (token, idx) => {
+        return twemoji.parse(token[idx].content, {
+          folder: 'svg',
+          ext: '.svg'
+        })
+      }
+    }
   }
 }
