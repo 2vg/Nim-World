@@ -28,7 +28,7 @@ module.exports = {
           ['/ordinal', '3-1: 序数型'],
           ['/floating', '3-2: 浮動小数点型'],
           ['/string', '3-3: 文字列型'],
-          ['/structuretype', '3-4: 構造化型']
+          ['/structured', '3-4: 構造化型']
         ]
       },
       ['/condition', '4: 条件'],
