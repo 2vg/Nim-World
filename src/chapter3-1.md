@@ -24,8 +24,6 @@ var
 `int`はマシンのポインタサイズに依存するので、例えばサイズごとに異なる挙動をさせたりすることが可能です。
 
 ```nim
-const ptrSize = sizeof(int)
-
 when sizeof(int) == 2:
   echo "running on a 16 bit system!"
 elif sizeof(int) == 4:
@@ -40,24 +38,44 @@ else:
 
 * 文字 `char` 基本的に`uint8`のエイリアスタイプです
 
+`char`はシングルクォーテーション`'`で一文字を囲むことで表現します。
+
 `char`のサイズは1バイトなので、普通はUTF-8を扱うことは出来ないのですが、Nimは結果的にUTF-8を適切に処理することができます。
 
 内部で`array[char, int]`や`set[char]`の型を使用して効率的に処理しています。
 
 また、[unicode](https://nim-lang.org/docs/unicode.html)モジュールを使用することで`Rune`型が使用できるようになり、それは任意のUnicode文字を直接表現することができます。
 
+```nim
+const test = "test"
+
+var
+  a = 'a'
+  b = test[1] # e
+```
+
 ## ブーリアン型
+
+* ブーリアン `bool`
 
 Nimのブーリアン型は、`true`と`false`の2種類のみです。
 
-主に条件分岐で使用します。
+主に条件分岐などで使用します。
+
+また、`0`や`1`などの数値を暗黙的に`bool`に変換することはできませんが、`0.bool`などのようにすることで変換することが出来ます。
 
 ```nim
-const boo = 0
-if boo == 0:
-  echo "boo is 0"
+const
+  zero = 0
+  one = 1
+
+if zero == 0:
+  echo "zero"
 else:
-  echo "boo is " & boo
+  echo "not zero"
+
+if one.bool:
+  echo "true"
 ```
 
 ## 列挙型
