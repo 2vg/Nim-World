@@ -1,8 +1,20 @@
 // .vuepress/config.js
+const path = require('path')
 const twemoji = require('twemoji')
 
+const sidebarGroup = (dirName, children = [], collapsable = false) => {
+  let directory = path.join('/', dirName, '/')
+  return [
+    directory,
+    {
+      collapsable,
+      children: children.map(child => path.join(directory, child))
+    }
+  ]
+}
+
 module.exports = {
-  base: "/",
+  base: '/',
   locales: {
     '/': {
       lang: 'ja-JP',
@@ -12,43 +24,28 @@ module.exports = {
   },
   themeConfig: {
     sidebar: [
-      ['/', 'Introduction'],
-      ['/divetonim/', '1: Dive To Nim 👑'],
-      {
-        collapsable: false,
-        children: [
-          ['/divetonim/hellonim', '1-1: こんにちは！Nimの世界！']
-        ]
-      },
-      ['/variable/', '2: 変数'],
-      ['/types/', '3: 様々な型'],
-      {
-        collapsable: false,
-        children: [
-          ['/types/ordinal', '3-1: 序数型'],
-          ['/types/floating', '3-2: 浮動小数点型'],
-          ['/types/string', '3-3: 文字列型'],
-          ['/types/structured', '3-4: 構造化型']
-        ]
-      },
-      ['/condition/', '4: 条件'],
-      {
-        collapsable: false,
-        children: [
-          ['/condition/if', '4-1: if'],
-          ['/condition/case', '4-2: case'],
-          ['/condition/when', '4-3: when']
-        ]
-      },
-      ['/loop/', '5: ループ'],
-      {
-        collapsable: false,
-        children: [
-          ['/loop/while', '5-1: while'],
-          ['/loop/for', '5-2: for'],
-          ['/loop/iterator', '5-3: iterator']
-        ]
-      },
+      '/',
+      ...sidebarGroup('divetonim', [
+        'hellonim'
+      ]),
+      ...sidebarGroup('variable', [
+      ]),
+      ...sidebarGroup('types', [
+        'ordinal',
+        'floating',
+        'string',
+        'structured'
+      ]),
+      ...sidebarGroup('condition', [
+        'if',
+        'case',
+        'when'
+      ]),
+      ...sidebarGroup('loop', [
+        'while',
+        'for',
+        'iterator'
+      ]),
       // ['/chapter6', '6: 関数'],
       // ['/chapter7', '7: 参照'],
       // ['/chapter8', '8: テスト'],
