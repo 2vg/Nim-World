@@ -31,7 +31,7 @@ module.exports = {
           ['/chapter3-4', '3-4: 構造化型']
         ]
       },
-      ['/chapter4', '4: 条件'],
+/*      ['/chapter4', '4: 条件'],
       {
         collapsable: false,
         children: [
@@ -70,7 +70,7 @@ module.exports = {
           ['/chapter10-5', '10-5: コンパイルオプション'],
           ['/chapter10-6', '10-6: アセンブリ']
         ]
-      },
+      },*/
     ],
   },
   markdown: {
