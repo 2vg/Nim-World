@@ -46,8 +46,10 @@ var マジ卍 = "ﾏｼﾞ ﾏﾝｼﾞｨｨｨｨｨ!!!!!"
 例えば悪い例として、以下のようなコードがあります。
 
 ```nim
-let x = readLine(stdin)
 const x = readLine(stdin)
+
+# 正しくは let を使う．
+# let x = readLine(stdin)
 ```
 
 `readLine`は、標準入力から一行読み取る関数です。
