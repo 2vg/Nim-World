@@ -1,4 +1,4 @@
-# case文
+# case
 
 `case`は、他言語で言う`switch`のようなものです。
 
