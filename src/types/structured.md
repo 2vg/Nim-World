@@ -114,3 +114,19 @@ proc aEcho(arr: openArray[char]) =
 a.aEcho
 ```
 
+## Varargs
+
+`Varargs`は、`Open arrays`と同じく関数のパラメータとしてのみ使用することができます。
+
+これは関数の最後の引数の型としてのみ使うことができ、引数を暗黙的に配列に変換します。
+
+```nim
+proc myWriteln(f: File, a: varargs[string]) =
+  for s in items(a):
+    write(f, s)
+  write(f, "\n")
+
+myWriteln(stdout, "abc", "def", "xyz")
+# これはこの形に変換されます
+# myWriteln(stdout, ["abc", "def", "xyz"])
+```
