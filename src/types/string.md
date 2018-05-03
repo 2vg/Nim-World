@@ -1,22 +1,37 @@
 # 文字列型
 
-* 文字列 `string`, `cstring`
+* `string`
 
-`string`はNimで使われる通常の文字列型です。文字列型は`char`型の配列なので、`[]`演算子とインデックス数値で任意のポジションの文字を取得できます。
+`string`はNimで使われる通常の文字列型です。文字列型は`char`型の配列ですが、ヌル終端であることと長さを保持していることが特別です。
 
-例えば `str[0 .. 2]` は `str` 0 文字目から 2 文字目、つまり `str` が "Nim World" ならば "Nim" を返します。
+```nim
+echo "Hi"  # => "Hi"
+echo "文字列" # => "文字列"
+
+# スライス操作も可能, ただしバイト列を扱っていることに注意
+# echo "文字列"[0 .. ^2] # こちらは表示崩れを引きおこす
+echo "文字列"[0 .. ^4] # => "文字"
+
+let str = "日本語"
+echo len(str)  # => 9: バイトの長さが返ってくる.
+
+# 文字列の長さが欲しい場合, runeLenを使うことができる.
+import unicode
+echo runeLen(str) # => 3
+
+# 普通にforを適用した場合, バイト列に対する反復操作になる.
+for c in str:
+  echo $c.int
+
+# 各文字に対する反復操作はunicodeモジュールのutf8を使う.
+for c in str.utf8:
+  echo c
+```
+
+* `cstring`
 
 `cstring`は主にCとの連携で使う文字列型で、Cにおいて`char *`と同じものを意味します。
 
 内部的にはGCの回収対象で、回収されてしまうことがありますが、GCはスタックのルートを控えめに監視しているので、ほぼ回収されることはありません。
 
 ですが、もし問題が起きる場合は`GC_ref`や`GC_unref`を使用してGC回収を防ぐことができます。
-
-```nim
-var
-  str = "Hello, World!"
-  cstr: cstring = "Hello, World!"
-
-echo str[0] # H
-echo str[0 .. str.len - 2] # Hello, World
-```
