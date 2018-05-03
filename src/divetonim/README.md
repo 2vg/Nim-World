@@ -13,4 +13,3 @@ DLLはこちらで入手できます。[DLL](https://nim-lang.org/download/dlls.
 Unix系OSやmacOSの方はあらかじめCコンパイラ\(clang, gcc\)、そしてPCREとOpenSSLが必要です。ない場合はインストールしておきましょう。
 
 コンパイラをダウンロードしてビルドした後は必ず環境変数へパスの追加をしておきましょう。
-
