@@ -93,3 +93,22 @@ echo c1.name & " have the " & c1.toy
 if c1 of Human:
   echo "c1 is subset of Human."
 ```
+
+## Open arrays
+
+`Open arrays`は、関数のパラメータの型としてのみ使用することが出来ます。
+
+定義の仕方は`openArray[T]`です。
+
+これは固定サイズである配列`array[N, T]`をより柔軟に引数にすることができ、非常に便利です。
+
+```nim
+var a: array[4, char] = ['t', 'e', 's', 't']
+
+proc aEcho(arr: openArray[char]) =
+  for i, v in arr:
+    echo "index " & $i & " is " & v
+
+a.aEcho
+```
+
