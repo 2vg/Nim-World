@@ -69,13 +69,27 @@ type
     name: string
     age: int
 
-  Human = object
+  # RootObjを継承しないとfinalオブジェクトとなり継承不可
+  # ただし、{.inheritable.}を使うことで回避可能
+  Human = object of RootObj
     name: string
     age: int
 
   Child = object of Human
+    toy: string
 
 var
-  p1 = Person(name: "john", age: 20)
+  # p1はPerson型と一緒のタプル
+  p1 = (name: "john", age: 20)
   p2: Person = (name: "an", age: 18)
+  h1 = Human(name: "mofu", age: 5)
+  c1 = Child(name: "mfchan", age: 1, toy: "computer")
 
+echo p1.name & " love " & p2.name
+echo "my name is " & h1.name
+
+echo c1.name & " have the " & c1.toy
+
+if c1 of Human:
+  echo "c1 is subset of Human."
+```
