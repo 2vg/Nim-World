@@ -14,6 +14,9 @@ Nim言語の使い方などを日本語で書き記したものです。
 [Nim-World](https://2vg.github.io/Nim-World)
 
 ## current status
+
+目次は変更される可能性があります。
+
 - [x] 1: Dive To Nim 👑
 - [x] 1-1: こんにちは！Nimの世界！
 - [x] 2: 変数
@@ -72,5 +75,6 @@ vuepress build src # build static file to src/.vuepress/dist
 
 ## Maintainer
 - [mofu](https://twitter.com/mfqn) (owner, and main maintainer.)
-- [rigani_c](https://twitter.com/rigani_c) (beautiful css, and fix some. thx!)
+- [kubo39](https://github.com/kubo39) (add some tut, some fix, and more. thx !)
+- [rigani_c](https://twitter.com/rigani_c) (beautiful css, and fix some. thx !)
 - [loloiccl](https://github.com/loloiccl) (some fix typo, and more. thx !)
