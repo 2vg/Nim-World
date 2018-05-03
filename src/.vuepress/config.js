@@ -45,7 +45,7 @@ module.exports = {
         'for',
         'iterator'
       ]),
-      // ...sidebarGroup('chapter6'), // 関数
+      ...sidebarGroup('procs'),
       // ...sidebarGroup('chapter7'), // 参照
       // ...sidebarGroup('chapter8'), // テスト
       // // モジュールとパッケージ
