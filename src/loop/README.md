@@ -6,6 +6,6 @@ Nimのループは、
 
 特殊な物として`iterator`があります。
 
-- [while](/while.html)
-- [for](/for.html)
-- [iterator](/iterator.html)
+- [while](/loop/while.html)
+- [for](/loop/for.html)
+- [iterator](/loop/iterator.html)
