@@ -4,15 +4,30 @@ Nimの関数は`proc`で定義されます。
 
 引数や返り値は`名前: 型`で定義し、最後に`=`をつけてインデントすることで定義していきます。
 
-定義例は次のとおりです。
+関数を呼ぶ時は他の言語と同じように、`関数名(第一引数, 第二引数...)`とやることで呼び出しができます。
+
+また、Nimでは呼び出し方法が他にもあり、`第一引数.関数名(第二引数以降はカッコ内)`のように呼び出すことも可能です。
+
+また、引数が1つの場合は`関数名 引数`と呼び出すことも可能です。
+
+では定義例と呼び出し例を実際に見てみましょう。
 
 ```nim
-proc call(str: string): string =
-  echo str
+proc call(str1: string, str2: string): string =
+  result = str1 & str2 # &は文字列連結演算子
+
+proc call2(str: string): string =
   result = str
+
+echo call("hello ", "world")
+echo "hello ".call("world")
+
+echo call2 "hello world"
 ```
 
-関数内に`return`が無いことに気づきましたか？
+`call2`だけ引数が1つですが、`echo`の実行結果は全て同じ`hello world`です。
+
+ところで、return`が無いことに気づきましたか？
 
 `proc`は暗黙的に`result`変数を持っていて、`reteun T`は暗黙的に`result`変数を返しています。
 
