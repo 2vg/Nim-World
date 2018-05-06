@@ -155,11 +155,11 @@ echo str2[]
 
 通常、関数の引数に渡す値は、コピーが発生します。
 
-今のNimでは文字列を関数に渡す際はコピーが発生しないようですが、例えば`object`型などを渡すと、関数の変数としてコピーされます。
+Nimでは通常参照渡しとなり、コピーが発生しません。しかし、渡された値を編集した時点でコピーされてしまします。
 
-仮に巨大なサイズのオブジェクトがあってそれを編集する関数があったとしましょう。
+仮に巨大なサイズのオブジェクトがあってそれを関数内部で編集する関数があったとしましょう。
 
-関数に渡す値はコピーされるので、関数に渡すと巨大なサイズのオブジェクトがもう一つできる事になります。
+関数に渡して編集した時点で値がコピーされるので巨大なサイズのオブジェクトがもう一つできる事になります。
 
 これが数回程度ならいいかもしれませんが、数千回、数万回となってくるとどうでしょうか？
 
@@ -174,3 +174,71 @@ echo str2[]
 関数の外で他にも同じ場所を指し示すポインタ変数がある場合などで注意が必要です。
 
 ## refとobject型
+
+`ref`を`object`で扱う事は通常の`ref`の使用とほぼ同じです。
+
+`object`は`type`ステートメントで宣言しますが、ここで`ref`を使うのと`new object`をするのとでは少し違います。
+
+まずは以下のコードを見てみましょう。
+
+それぞれ関数内部でオブジェクトを作成し、それを返り値としています。
+
+```nim
+type
+  Obj = object
+    name: string
+
+  ObjRef = ref Obj
+
+  ObjRef2 = ref object
+    name: string
+
+proc oCreate1(): Obj =
+  var o = Obj(name: "john")
+  echo repr o
+  return o
+
+proc oCreate2(): ObjRef =
+  var o = ObjRef(name: "sam")
+  echo repr o
+  return o
+
+proc oCreate3(): ObjRef2 =
+  var o = ObjRef2(name: "2vg")
+  echo repr o
+  return o
+
+proc oCreate4(): ref Obj =
+  var o = new Obj
+  o.name = "mofu"
+  echo repr o
+  return o
+
+var
+  o1 = oCreate1()
+  o2 = oCreate2()
+  o3 = oCreate3()
+  o4 = oCreate4()
+
+echo "\n--------\n"
+
+echo repr o1
+echo repr o2
+echo repr o3
+echo repr o4
+```
+
+実行すると気づいた事があると思います。
+
+`oCreate1`で作成されたオブジェクトは関数内のアドレスと関数の返り値でもらったオブジェクトは別々のアドレスになっていると思います。
+しかし、`oCreat2`から`oCreat4`は関数内のアドレスと同じです。
+
+違いが分かりますか？
+
+`oCreat1`で作られる`Obj`は関数内のスタックに作成されるのに対し、`ObjRef`、 `ObjRef2`、`ref Obj`はどれもヒープ内に作成されます。
+
+そのため、通常の`object`は関数を超えてアクセスできませんが、`ref`が付随すると関数を超えてオブジェクトにアクセスすることができるのです。
+
+`ref`を付随してヒープに作られたオブジェクトは、
+
+どこの変数からも参照がなくなったりして使われなくなると自動的に解放されるため、私たちは通常通りにコードを書くだけで良いのです。
