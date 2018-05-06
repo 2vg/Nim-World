@@ -34,6 +34,7 @@ module.exports = {
         'floating',
         'string',
         'structured'
+        // 'generics'
       ]),
       ...sidebarGroup('condition', [
         'if',
@@ -48,11 +49,8 @@ module.exports = {
       ...sidebarGroup('proc'),
       ...sidebarGroup('ref'),
       ...sidebarGroup('tests'),
-      // // モジュールとパッケージ
-      // ...sidebarGroup('chapter9', [
-      //   'chapter9-1', // モジュール
-      //   'chapter9-2', // パッケージ
-      // ]),
+      ...sidebarGroup('modules'),
+      // ...sidebarGroup('packages'),
       // // 高度なNim
       // ...sidebarGroup('chapter10', [
       //   'chapter10-1', // マクロ
