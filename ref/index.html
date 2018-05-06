@@ -7,7 +7,7 @@
     <meta name="description" content="Nim言語の日本語解説文書">
     
     
-    <link rel="preload" href="/Nim-World/assets/css/19.styles.97350ca6.css" as="style"><link rel="preload" href="/Nim-World/assets/js/app.b9a86e97.js" as="script"><link rel="preload" href="/Nim-World/assets/js/6.24eec0ff.js" as="script"><link rel="prefetch" href="/Nim-World/assets/js/10.90d78aac.js"><link rel="prefetch" href="/Nim-World/assets/js/1.d1a46a55.js"><link rel="prefetch" href="/Nim-World/assets/js/2.0c1e5499.js"><link rel="prefetch" href="/Nim-World/assets/js/3.774b958f.js"><link rel="prefetch" href="/Nim-World/assets/js/4.392dee0d.js"><link rel="prefetch" href="/Nim-World/assets/js/5.4d05ed7c.js"><link rel="prefetch" href="/Nim-World/assets/js/7.1a1affae.js"><link rel="prefetch" href="/Nim-World/assets/js/8.9996e72c.js"><link rel="prefetch" href="/Nim-World/assets/js/9.a22f249c.js"><link rel="prefetch" href="/Nim-World/assets/js/0.94886f54.js"><link rel="prefetch" href="/Nim-World/assets/js/11.1f646027.js"><link rel="prefetch" href="/Nim-World/assets/js/12.0373e836.js"><link rel="prefetch" href="/Nim-World/assets/js/13.bca657c9.js"><link rel="prefetch" href="/Nim-World/assets/js/14.08a90064.js"><link rel="prefetch" href="/Nim-World/assets/js/15.f8821f41.js"><link rel="prefetch" href="/Nim-World/assets/js/16.3657439b.js"><link rel="prefetch" href="/Nim-World/assets/js/17.da7c4e56.js"><link rel="prefetch" href="/Nim-World/assets/js/18.fccac7f3.js">
+    <link rel="preload" href="/Nim-World/assets/css/19.styles.97350ca6.css" as="style"><link rel="preload" href="/Nim-World/assets/js/app.dbd44c20.js" as="script"><link rel="preload" href="/Nim-World/assets/js/6.7d368741.js" as="script"><link rel="prefetch" href="/Nim-World/assets/js/10.90d78aac.js"><link rel="prefetch" href="/Nim-World/assets/js/1.d1a46a55.js"><link rel="prefetch" href="/Nim-World/assets/js/2.0c1e5499.js"><link rel="prefetch" href="/Nim-World/assets/js/3.774b958f.js"><link rel="prefetch" href="/Nim-World/assets/js/4.392dee0d.js"><link rel="prefetch" href="/Nim-World/assets/js/5.4d05ed7c.js"><link rel="prefetch" href="/Nim-World/assets/js/7.1a1affae.js"><link rel="prefetch" href="/Nim-World/assets/js/8.9996e72c.js"><link rel="prefetch" href="/Nim-World/assets/js/9.a22f249c.js"><link rel="prefetch" href="/Nim-World/assets/js/0.94886f54.js"><link rel="prefetch" href="/Nim-World/assets/js/11.1f646027.js"><link rel="prefetch" href="/Nim-World/assets/js/12.0373e836.js"><link rel="prefetch" href="/Nim-World/assets/js/13.bca657c9.js"><link rel="prefetch" href="/Nim-World/assets/js/14.08a90064.js"><link rel="prefetch" href="/Nim-World/assets/js/15.f8821f41.js"><link rel="prefetch" href="/Nim-World/assets/js/16.3657439b.js"><link rel="prefetch" href="/Nim-World/assets/js/17.da7c4e56.js"><link rel="prefetch" href="/Nim-World/assets/js/18.fccac7f3.js">
     <link rel="stylesheet" href="/Nim-World/assets/css/19.styles.97350ca6.css">
   </head>
   <body>
@@ -48,10 +48,53 @@ str2<span class="token punctuation">[</span><span class="token punctuation">]</s
 
 echo str1<span class="token punctuation">[</span><span class="token punctuation">]</span>
 echo str2<span class="token punctuation">[</span><span class="token punctuation">]</span>
-</code></pre><p>実行すると何が表示されましたか？おそらく二回<code>aaaa</code>が表示されるはずです。</p><p>何故でしょうか？ 私達は<code>str1</code>には確かに<code>test</code>を代入しているはずです。</p><p>ここで普通の変数との違いが出てきます。</p><p><code>str1</code>と<code>str2</code>はどちらも<code>string</code>の値を指し示す変数です。</p><p>つまり<code>str2 = str1</code>はどちらも同じ<code>string</code>の値の場所を指し示す物となります。</p><p>なので、<code>str2</code>の中身を変更すると同じ場所を指し示す<code>str1</code>の値も同じ物になります。</p><p>ここでは<code>str2</code>の指し示す場所の値を<code>aaaa</code>に変更したため、同じ場所を指し示す<code>str1</code>の中身も<code>aaaa</code>になっているのです。</p><p>この挙動が何で役に立つかというと、例えば関数の引数に使う例があります。</p><p>通常、関数の引数に渡す値は、コピーが発生します。</p><p>今のNimでは文字列を関数に渡す際はコピーが発生しないようですが、例えば<code>object</code>型などを渡すと、関数の変数としてコピーされます。</p><p>仮に巨大なサイズのオブジェクトがあってそれを編集する関数があったとしましょう。</p><p>関数に渡す値はコピーされるので、関数に渡すと巨大なサイズのオブジェクトがもう一つできる事になります。</p><p>これが数回程度ならいいかもしれませんが、数千回、数万回となってくるとどうでしょうか？</p><p>ここで巨大なサイズのオブジェクトを指し示すポインタ変数を用意して、その変数を関数に渡すとどうでしょうか？</p><p>ここで発生するコピーはアドレスの数値のみです。中身は間接参照して取得することが出来ますよね。</p><p>つまり、値をコピーしたくないので、関数に値を渡す代わりに<code>ref T</code>を渡せば値のコピーがなくなり、処理速度が向上する、ということになります。</p><p>ただし、渡した<code>ref T</code>が指し示す値を直接変更したりする操作がある場合、</p><p>関数の外で他にも同じ場所を指し示すポインタ変数がある場合などで注意が必要です。</p><h2 id="refとobject型"><a href="#refとobject型" aria-hidden="true" class="header-anchor">#</a> refとobject型</h2></div><!----><div class="content page-nav"><p class="inner"><span class="prev">
+</code></pre><p>実行すると何が表示されましたか？おそらく二回<code>aaaa</code>が表示されるはずです。</p><p>何故でしょうか？ 私達は<code>str1</code>には確かに<code>test</code>を代入しているはずです。</p><p>ここで普通の変数との違いが出てきます。</p><p><code>str1</code>と<code>str2</code>はどちらも<code>string</code>の値を指し示す変数です。</p><p>つまり<code>str2 = str1</code>はどちらも同じ<code>string</code>の値の場所を指し示す物となります。</p><p>なので、<code>str2</code>の中身を変更すると同じ場所を指し示す<code>str1</code>の値も同じ物になります。</p><p>ここでは<code>str2</code>の指し示す場所の値を<code>aaaa</code>に変更したため、同じ場所を指し示す<code>str1</code>の中身も<code>aaaa</code>になっているのです。</p><p>この挙動が何で役に立つかというと、例えば関数の引数に使う例があります。</p><p>通常、関数の引数に渡す値は、コピーが発生します。</p><p>Nimでは通常参照渡しとなり、コピーが発生しません。しかし、渡された値を編集した時点でコピーされてしまします。</p><p>仮に巨大なサイズのオブジェクトがあってそれを関数内部で編集する関数があったとしましょう。</p><p>関数に渡して編集した時点で値がコピーされるので巨大なサイズのオブジェクトがもう一つできる事になります。</p><p>これが数回程度ならいいかもしれませんが、数千回、数万回となってくるとどうでしょうか？</p><p>ここで巨大なサイズのオブジェクトを指し示すポインタ変数を用意して、その変数を関数に渡すとどうでしょうか？</p><p>ここで発生するコピーはアドレスの数値のみです。中身は間接参照して取得することが出来ますよね。</p><p>つまり、値をコピーしたくないので、関数に値を渡す代わりに<code>ref T</code>を渡せば値のコピーがなくなり、処理速度が向上する、ということになります。</p><p>ただし、渡した<code>ref T</code>が指し示す値を直接変更したりする操作がある場合、</p><p>関数の外で他にも同じ場所を指し示すポインタ変数がある場合などで注意が必要です。</p><h2 id="refとobject型"><a href="#refとobject型" aria-hidden="true" class="header-anchor">#</a> refとobject型</h2><p><code>ref</code>を<code>object</code>で扱う事は通常の<code>ref</code>の使用とほぼ同じです。</p><p><code>object</code>は<code>type</code>ステートメントで宣言しますが、ここで<code>ref</code>を使うのと<code>new object</code>をするのとでは少し違います。</p><p>まずは以下のコードを見てみましょう。</p><p>それぞれ関数内部でオブジェクトを作成し、それを返り値としています。</p><pre class="language-nim"><code><span class="token keyword">type</span>
+  Obj <span class="token operator">=</span> <span class="token keyword">object</span>
+    name<span class="token operator">:</span> string
+
+  ObjRef <span class="token operator">=</span> <span class="token keyword">ref</span> Obj
+
+  ObjRef2 <span class="token operator">=</span> <span class="token keyword">ref</span> <span class="token keyword">object</span>
+    name<span class="token operator">:</span> string
+
+<span class="token keyword">proc</span> <span class="token function">oCreate1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Obj <span class="token operator">=</span>
+  <span class="token keyword">var</span> o <span class="token operator">=</span> <span class="token function">Obj</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token string">&quot;john&quot;</span><span class="token punctuation">)</span>
+  echo repr o
+  <span class="token keyword">return</span> o
+
+<span class="token keyword">proc</span> <span class="token function">oCreate2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> ObjRef <span class="token operator">=</span>
+  <span class="token keyword">var</span> o <span class="token operator">=</span> <span class="token function">ObjRef</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token string">&quot;sam&quot;</span><span class="token punctuation">)</span>
+  echo repr o
+  <span class="token keyword">return</span> o
+
+<span class="token keyword">proc</span> <span class="token function">oCreate3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> ObjRef2 <span class="token operator">=</span>
+  <span class="token keyword">var</span> o <span class="token operator">=</span> <span class="token function">ObjRef2</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token string">&quot;2vg&quot;</span><span class="token punctuation">)</span>
+  echo repr o
+  <span class="token keyword">return</span> o
+
+<span class="token keyword">proc</span> <span class="token function">oCreate4</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">ref</span> Obj <span class="token operator">=</span>
+  <span class="token keyword">var</span> o <span class="token operator">=</span> new Obj
+  o<span class="token operator">.</span>name <span class="token operator">=</span> <span class="token string">&quot;mofu&quot;</span>
+  echo repr o
+  <span class="token keyword">return</span> o
+
+<span class="token keyword">var</span>
+  o1 <span class="token operator">=</span> <span class="token function">oCreate1</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  o2 <span class="token operator">=</span> <span class="token function">oCreate2</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  o3 <span class="token operator">=</span> <span class="token function">oCreate3</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  o4 <span class="token operator">=</span> <span class="token function">oCreate4</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+echo <span class="token string">&quot;\n--------\n&quot;</span>
+
+echo repr o1
+echo repr o2
+echo repr o3
+echo repr o4
+</code></pre><p>実行すると気づいた事があると思います。</p><p><code>oCreate1</code>で作成されたオブジェクトは関数内のアドレスと関数の返り値でもらったオブジェクトは別々のアドレスになっていると思います。
+しかし、<code>oCreat2</code>から<code>oCreat4</code>は関数内のアドレスと同じです。</p><p>違いが分かりますか？</p><p><code>oCreat1</code>で作られる<code>Obj</code>は関数内のスタックに作成されるのに対し、<code>ObjRef</code>、 <code>ObjRef2</code>、<code>ref Obj</code>はどれもヒープ内に作成されます。</p><p>そのため、通常の<code>object</code>は関数を超えてアクセスできませんが、<code>ref</code>が付随すると関数を超えてオブジェクトにアクセスすることができるのです。</p><p><code>ref</code>を付随してヒープに作られたオブジェクトは、</p><p>どこの変数からも参照がなくなったりして使われなくなると自動的に解放されるため、私たちは通常通りにコードを書くだけで良いのです。</p></div><!----><div class="content page-nav"><p class="inner"><span class="prev">
         ← <a href="/Nim-World/proc/" class="prev">
           関数
         </a></span><!----></p></div></div></div></div>
-    <script src="/Nim-World/assets/js/6.24eec0ff.js" defer></script><script src="/Nim-World/assets/js/app.b9a86e97.js" defer></script>
+    <script src="/Nim-World/assets/js/6.7d368741.js" defer></script><script src="/Nim-World/assets/js/app.dbd44c20.js" defer></script>
   </body>
 </html>
