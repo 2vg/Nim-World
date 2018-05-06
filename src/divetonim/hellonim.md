@@ -6,6 +6,14 @@ Nimのソースコードファイルの拡張子は`.nim`です。
 
 以下のファイルを`hello.nim`として保存し、`nim compile --run hello.nim`で実行してみましょう！
 
+::: tip
+コンパイルコマンドですが、`compile`は`c`、`--run`は`-r`と短く指定することも可能です。
+
+また、拡張子を省くことも出来るので次のようにしてもコンパイルと実行が出来ます。
+
+`nim c -r hello`
+:::
+
 ```nim
 echo "Hello, World !"
 ```
