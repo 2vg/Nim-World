@@ -47,7 +47,7 @@ module.exports = {
       ]),
       ...sidebarGroup('proc'),
       ...sidebarGroup('ref'),
-      // ...sidebarGroup('chapter8'), // テスト
+      ...sidebarGroup('tests'),
       // // モジュールとパッケージ
       // ...sidebarGroup('chapter9', [
       //   'chapter9-1', // モジュール
