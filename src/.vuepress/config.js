@@ -50,7 +50,7 @@ module.exports = {
       ...sidebarGroup('ref'),
       ...sidebarGroup('tests'),
       ...sidebarGroup('modules'),
-      // ...sidebarGroup('packages'),
+      ...sidebarGroup('packages'),
       // // 高度なNim
       // ...sidebarGroup('chapter10', [
       //   'chapter10-1', // マクロ
