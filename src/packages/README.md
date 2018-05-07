@@ -4,6 +4,10 @@ Nimのパッケージシステムは[nimble](https://github.com/nim-lang/nimble)
 
 パッケージリストはGitHubで管理されています。 [nim-lang/packages](https://github.com/nim-lang/packages)
 
+たくさんのコマンドがありますが、ここでは最低限覚える必要があるコマンドだけを解説します。
+
+## パッケージ作成
+
 まずはパッケージを作ってみましょう！次のコマンドを打ってみてください。
 
 ```shell
@@ -88,4 +92,95 @@ $ nimble init
     └── test1.nims
 ```
 
-**作業途中**
+それぞれのファイルは以下のような物です。
+
+- `hello.nimble`
+
+パッケージの設定ファイル。
+
+ここに依存パッケージの情報やパッケージの概要などが書かれている。
+
+- `src/hello.nim`
+
+メインコードを記述する。
+
+パッケージ内でモジュールとしてコードを分ける場合、2種類の分け方があります。
+
+パッケージ名と同じ名前のディレクトリを作成(ここではhelloディレクトリ)し、そこにメインで使うモジュールを入れると、
+
+`hello/モジュール名`でサブモジュールのような形で公開し、こちらも合わせて利用することが出来ます。
+
+`private`というディレクトリを作成して、そこにメインで使うモジュールを入れると、`private`内のモジュールは公開されず、パッケージのプロジェクト内でのみ利用することが出来ます。
+
+- `tests/test1.nim`
+
+テスト用ファイル。
+
+`nimble test`でパッケージのテストが実行でき、そのテスト内容をこのファイルに記述します。
+
+- `tests/test1.nims`
+
+test1用NimScriptファイル。
+
+ここでのNimScriptファイルは`hoge.nim.cfg`のような設定ファイルと同じような感じですが、
+
+実際のNimScriptは他にも多様な使い方が出来るので、別の[NimScript](/nimscript)章を参照してください。
+
+### .nimbleファイル
+
+nimbleファイルはパッケージのいちばん重要な設定ファイルです。
+
+nimbleファイルの最小限の書き方は次のとおりです。
+
+```plaintext
+# これらの記述は必須項目で、1つでも欠けていると`nimble`は警告を出します。
+
+# Package
+
+#バージョン情報 
+version     = "0.1.0"
+# 作成者の名前
+author      = "Your Name"
+# パッケージの概要
+description = "Example .nimble file."
+# パッケージのライセンス
+license     = "MIT"
+
+# Deps
+
+# 依存関係 Nimコンパイラの依存記述は必須
+requires "nim >= 0.18.0"
+# パッケージリストに無くてもGitHubなどに上がっていればこのように指定できる
+# requires "https://github.com/2vg/mofuw >= 0.1.0"
+```
+
+`task タスク名, "概要"`と記述することで、`nimble タスク名`でそのボディに記述されたコードを実行できます。
+
+`before タスク名`と記述するとそのタスク名のタスクが実行される前に、ボディに記述されたコードを実行実行されます。
+
+```nim
+task hello, "this is hello task.":
+  echo "Hello"
+
+before hello:
+  echo "helloタスク実行前準備"
+
+# $ nimble hello
+# $ helloタスク実行前準備
+# $ Hello
+```
+
+また、他にも以下のような項目があります。 [optional](https://github.com/nim-lang/nimble#optional)
+
+- `skipDirs`: インストール時にスキップするディレクトリ名のリスト。カンマで区切れます。
+- `skipFiles`: インストール時にスキップするファイル名のリスト。カンマで区切れます。
+- `skipExt`: インストール時にスキップするファイル拡張子のリスト。カンマで区切れます。
+- `installDirs`:
+- `installFiles`:
+- `installExt`:
+- `srcDir` - ソースコードを含むディレクトリを指定します。デフォルトは`src`です。
+- `binDir` - `nimble build`がバイナリを出力するディレクトリを指定します。デフォルトでは`bin`です。
+- `bin`:
+- `backend`: コンパイルに使用するバックエンドを指定します。`c`、`cc`、 `cpp`、 `objc`、 `js`が指定可能で、デフォルトは`c`です。
+
+## パッケージのインストール
