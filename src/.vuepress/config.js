@@ -51,15 +51,15 @@ module.exports = {
       ...sidebarGroup('tests'),
       ...sidebarGroup('modules'),
       ...sidebarGroup('packages'),
-      // // 高度なNim
-      // ...sidebarGroup('chapter10', [
-      //   'chapter10-1', // マクロ
-      //   'chapter10-2', // ポインタとメモリ
-      //   'chapter10-3', // マルチスレッド
-      //   'chapter10-4', // FFI
-      //   'chapter10-5', // コンパイルオプション
-      //   'chapter10-6', // アセンブリ
-      // ]),
+      ...sidebarGroup('advancednim', [
+        'macros', // マクロ
+      　 'ptrmem', // ポインタとメモリ
+        'multithreads', // マルチスレッド
+        'ffi', // FFI
+        'compileoptions', // コンパイルオプション
+        'nimscript', //NimScript
+        'asm', // アセンブリ
+      ]),
     ],
   },
   markdown: {
