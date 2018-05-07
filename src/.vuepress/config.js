@@ -33,8 +33,8 @@ module.exports = {
         'ordinal',
         'floating',
         'string',
-        'structured'
-        // 'generics'
+        'structured',
+        'generics'
       ]),
       ...sidebarGroup('condition', [
         'if',
@@ -58,7 +58,7 @@ module.exports = {
         'ffi', // FFI
         'compileoptions', // コンパイルオプション
         'nimscript', //NimScript
-        'asm', // アセンブリ
+        'asm' // アセンブリ
       ]),
     ],
   },
