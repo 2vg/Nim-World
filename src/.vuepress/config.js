@@ -2,7 +2,7 @@
 const path = require('path')
 const twemoji = require('twemoji')
 
-const sidebarGroup = (dirName, children = [], collapsable = false) => {
+const sidebarGroup = (dirName, children = [], collapsable = true) => {
   let directory = path.join('/', dirName, '/')
   return [
     directory,
