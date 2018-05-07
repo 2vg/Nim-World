@@ -124,7 +124,7 @@ test1用NimScriptファイル。
 
 ここでのNimScriptファイルは`hoge.nim.cfg`のような設定ファイルと同じような感じですが、
 
-実際のNimScriptは他にも多様な使い方が出来るので、別の[NimScript](/nimscript)章を参照してください。
+実際のNimScriptは他にも多様な使い方が出来るので、別の[NimScript](/advancednim/nimscript.html)章を参照してください。
 
 ### .nimbleファイル
 
