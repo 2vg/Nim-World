@@ -60,3 +60,33 @@ type
 
 また同じようなコードを書けば良いですが、各々の型に対応する似たようなコードを書くのは退屈な作業ですしコードの保守の観点からもよくありません。これらの作業は Nim が目指そうとする「効率」「表現力」「優雅さ」に反することになります。Nim はジェネリクスによってこうした退屈な作業を避けることができます。
 
+## 関数
+
+ジェネリクスを使うことで、型をパラメータとする関数を定義でき、次のような統一的な記述をすることができます。
+
+```nim
+proc swap[T](a, b: var T) =
+  var tmp = a
+  a = b
+  b = tmp
+
+proc reverse[T](arr: var openArray[T]) =
+  var x = 0
+  var y = arr.high
+  while x < y:
+    swap(arr[x], arr[y])
+    dec(y)
+    inc(x)
+
+var intArr = [1, 2, 3, 4, 5]
+reverse(intArr) # reverse[int](intArr) でも良い
+echo intArr # [5, 4, 3, 2, 1]
+
+var msg = "miN morf olleH"
+reverse(msg) # reverse[char](msg) でも良い
+echo msg # Hello from Nim
+```
+## 補足
+
+- `swap` はすでに Nim に組み込まれており定義する必要はありません。
+- また `reverse` は標準ライブラリ [`algorithm`](https://nim-lang.org/docs/algorithm.html) モジュールをインポートすることで利用できます。
