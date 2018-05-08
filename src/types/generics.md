@@ -61,7 +61,7 @@ type
 ジェネリクスを使うことで、関数の引数の型をパラメータ化し、次のように型に関して抽象的なプログラムを行うことができます。
 
 ```nim
-sample.nim
+# sample.nim
 proc swap[T](a, b: var T) =
   var tmp = a
   a = b
