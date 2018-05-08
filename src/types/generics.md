@@ -90,3 +90,20 @@ echo msg # Hello from Nim
 
 - `swap` はすでに Nim に組み込まれており定義する必要はありません。
 - また `reverse` は標準ライブラリ [`algorithm`](https://nim-lang.org/docs/algorithm.html) モジュールをインポートすることで利用できます。
+
+## ジェネリクス
+
+ジェネリクスはイテレータでも使うことができます。
+
+```nim
+iterator reverseItems[T](x: T): auto =
+  for i in countdown(x.high, x.low):
+    yield x[i]
+
+for c in reverseItems("foo"):
+  echo c
+
+var arr = [0,1,2]
+for c in reverseItems(arr):
+  echo c
+```
