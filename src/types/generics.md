@@ -101,9 +101,9 @@ iterator reverseItems[T](x: T): auto =
     yield x[i]
 
 for c in reverseItems("foo"):
-  echo c
+  echo c # o, o, f の順に出力される
 
 var arr = [0, 1, 2]
 for c in reverseItems(arr):
-  echo c
+  echo c # 2, 1, 0 の順に出力される
 ```
