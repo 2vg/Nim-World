@@ -52,6 +52,8 @@ o.echoA1 # print 2
 `モジュール名.使用する型名や関数名`とすることで、インポートした他のモジュール同士が同じ型名や関数名を定義していた時に区別できるようになります。
 
 もしコンパイル時にどのモジュールの物か分からない場合はコンパイルエラーとなります。
+
+また、インポートするモジュールに`import モジュール名 as 別名`としてして別名をつけることが出来ます。
 :::
 
 ```nim
@@ -79,15 +81,19 @@ proc echoA1*(obj: AObject) =
 
 ```nim
 # B.nim
-import A, C
+import A
+import C as cc
 
 # valがintなのでAのAObjectと分かる
-var o = A.AObject(val: 1)
+var
+  ao = A.AObject(val: 1)
+  co = cc.AObject(val: "Hello World")
 
 # どちらのAObjectかわからないため、コンパイルエラーになる
 # var o = AObject()
 
-o.echoA1
+ao.echoA1 # print 1
+co.echoA1 # print Hello World
 ```
 
 ## from
