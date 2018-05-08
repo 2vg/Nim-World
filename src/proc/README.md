@@ -27,7 +27,7 @@ echo call2 "hello world"
 
 `call2`だけ引数が1つですが、`echo`の実行結果は全て同じ`hello world`です。
 
-ところで、return`が無いことに気づきましたか？
+ところで、`return`が無いことに気づきましたか？
 
 `proc`は暗黙的に`result`変数を持っていて、`reteun T`は暗黙的に`result`変数を返しています。
 
