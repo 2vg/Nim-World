@@ -103,7 +103,7 @@ iterator reverseItems[T](x: T): auto =
 for c in reverseItems("foo"):
   echo c
 
-var arr = [0,1,2]
+var arr = [0, 1, 2]
 for c in reverseItems(arr):
   echo c
 ```
