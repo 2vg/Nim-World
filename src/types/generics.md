@@ -92,7 +92,7 @@ echo msg # Hello from Nim
 さらにジェネリクスはイテレータでも使うことができます。コードは[ここから](https://hookrace.net/blog/introduction-to-metaprogramming-in-nim/#inline-iterators)引用しました。
 
 ```nim
-iterator reverseItems[T](x: T): auto =
+iterator reverseItems[T](x: openArray[T]): T =
   for i in countdown(x.high, x.low):
     yield x[i]
 
