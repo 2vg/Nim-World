@@ -18,7 +18,7 @@ proc reverseIntArray(arr: var openArray[int]) =
     inc(x)
 ```
 
-この関数を使うと整数を型とする配列を逆順にソートさせることができます：
+この関数を使うと整数を型とする配列を逆順に並べることができます：
 
 ```nim
 var intArr = [1, 2, 3, 4, 5]
@@ -26,7 +26,7 @@ reverseIntArray(intArr)
 echo intArr # [5, 4, 3, 2, 1]
 ```
 
-では、文字列 `var msg = "miN morf olleH"` を逆順にソートさせたい場合はどうでしょう？ `swap` `reverseIntArray` をよく見ると型 `int` に依存しない実装になっていますので `int` の部分を `char` に置換したコードを活用できそうです。
+では、同様の処理を文字列 `var msg = "miN morf olleH"` に対して適用させたい場合はどうでしょう？ `swap` `reverseIntArray` をよく見ると型 `int` に依存しない実装になっていますので `int` の部分を `char` に置換したコードを活用できそうです。
 
 ```nim
 proc swapTwoChar(a, b: var char) =
