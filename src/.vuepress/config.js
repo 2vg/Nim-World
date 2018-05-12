@@ -33,8 +33,7 @@ module.exports = {
                 'ordinal',
                 'floating',
                 'string',
-                'structured',
-                'generics'
+                'structured'
             ]),
             ...sidebarGroup('condition', [
                 'if',
@@ -52,6 +51,7 @@ module.exports = {
             ...sidebarGroup('modules'),
             ...sidebarGroup('packages'),
             ...sidebarGroup('advancednim', [
+                'generics', // ジェネリクス
                 'macros', // マクロ
                 　'ptrmem', // ポインタとメモリ
                 'multithreads', // マルチスレッド
