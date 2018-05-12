@@ -86,8 +86,10 @@ echo msg # Hello from Nim
 
 この場合、Nim はコンパイルの際に型を推定しコードを展開します。実際、コンパイル時に生成される C のコード (nimcache/sample.c) を見ると、 `int` と `char` 各々の場合に対応した `reverse` および `swap` のコードが生成されており、各々の関数が適切に呼び出される様子が確認できます。コンパイラは賢いですね。
 
+::: tip
+実は、`swap` はすでに Nim に組み込まれており定義する必要はありません。また `reverse` は標準ライブラリ [`algorithm`](https://nim-lang.org/docs/algorithm.html) モジュールをインポートすることで利用できます。
+:::
 
-補足ですが、`swap` はすでに Nim に組み込まれており定義する必要はありません。また `reverse` は標準ライブラリ [`algorithm`](https://nim-lang.org/docs/algorithm.html) モジュールをインポートすることで利用できます。
 ジェネリクスはオブジェクトに対しても適用できます。次の例は[こちらの例](https://nim-by-example.github.io/arrays/)を拡張して型 `T` 上の行列と行列の積を定義しています。
 
 さらにジェネリクスはイテレータでも使うことができます。コードは[ここから](https://hookrace.net/blog/introduction-to-metaprogramming-in-nim/#inline-iterators)引用しました。
