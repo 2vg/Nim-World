@@ -92,7 +92,6 @@ echo msg # Hello from Nim
 
 ジェネリクスはオブジェクトに対しても適用できます。次の例は[こちらの例](https://nim-by-example.github.io/arrays/)を拡張して型 `T` 上の行列と行列の積を定義しています。
 
-さらにジェネリクスはイテレータでも使うことができます。コードは[ここから](https://hookrace.net/blog/introduction-to-metaprogramming-in-nim/#inline-iterators)引用しました。
 ```nim
 type
   #define M by N matrix over type T
@@ -122,6 +121,7 @@ echo C # [[1, 0, 1], [0, 1, 0], [1, 0, 1]]
 ```
 
 
+さらにジェネリクスはイテレータでも使うことができます。コードは[こちらを](https://hookrace.net/blog/introduction-to-metaprogramming-in-nim/#inline-iterators)参考にしました。
 
 ```nim
 iterator reverseItems[T](x: openArray[T]): T =
