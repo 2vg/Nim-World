@@ -81,3 +81,5 @@ vuepress build src # build static file to src/.vuepress/dist
 - [kubo39](https://github.com/kubo39) (add some tut, some fix, and more. thx !)
 - [rigani_c](https://twitter.com/rigani_c) (beautiful css, and fix some. thx !)
 - [loloiccl](https://github.com/loloiccl) (some fix typo, and more. thx !)
+- [mkanenobu](https://github.com/mkanenobu) (add some packages, thx !)
+- [terasakisatoshi](https://github.com/terasakisatoshi) (add generics, thx !)
