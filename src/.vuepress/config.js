@@ -53,7 +53,8 @@ module.exports = {
             ...sidebarGroup('advancednim', [
                 'generics', // ジェネリクス
                 'macros', // マクロ
-                　'ptrmem', // ポインタとメモリ
+                'pragma', // 
+                'ptrmem', // ポインタとメモリ
                 'multithreads', // マルチスレッド
                 'ffi', // FFI
                 'compileoptions', // コンパイルオプション

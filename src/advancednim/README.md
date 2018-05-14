@@ -8,6 +8,7 @@ Nimの世界は無限大です。より一層Nimの魅力に魅了されるこ�
 
 - [ジェネリクス](/advancednim/generics.html)
 - [マクロとテンプレート](/advancednim/macros.html)
+- [プラグマ](/advancednim/pragma.html)
 - [ポインタとメモリ](/advancednim/ptrmem.html)
 - [マルチスレッド](/advancednim/mulithreads.html)
 - [FFI](/advancednim/ffi.html)
