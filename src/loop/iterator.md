@@ -1,6 +1,6 @@
 # iterator
 
-イテレータ`iterator`は`for`や`while`使うことが出来ます。
+イテレータ`iterator`は`for`や`while`とともに使うことが出来ます。
 
 ループごとに値を反復処理するのを便利にします。
 
@@ -19,7 +19,7 @@ for i in countup(0, 5):
 
 また、`iterator`を変数に入れて`finished`でチェックすることで`while`を使ってこのように書くことが出来ます。
 
-イテレータは最後の値が返った後に呼ばれた後に終了状態になるため、`not finisehd(イテレータ)`では1つ余分にループが周ります。
+イテレータは最後の値が返った後に呼ばれた後に終了状態になるため、`not finished(イテレータ)`では1つ余分にループが周ります。
 
 ```nim
 iterator mycount(a, b: int): int {.closure.} =
